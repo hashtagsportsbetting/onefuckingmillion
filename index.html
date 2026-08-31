@@ -143,7 +143,7 @@
 
         .gauge-fill {
             height: 100%;
-            width: 1.0%;
+            width: 1.06%;
             background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--win-green));
             border-radius: 8px;
             box-shadow: 0 0 15px var(--neon-cyan);
@@ -245,6 +245,18 @@
         .mosaic-item:hover { transform: scale(1.06); z-index: 2; }
         .mosaic-item:active { transform: scale(0.96); }
 
+        .mosaic-win {
+            background: rgba(0, 255, 0, 0.12);
+            border: 2px solid var(--win-green);
+            color: var(--win-green);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.15);
+        }
+        .mosaic-loss {
+            background: rgba(255, 68, 68, 0.12);
+            border: 2px solid var(--loss-red);
+            color: var(--loss-red);
+            box-shadow: 0 0 10px rgba(255, 68, 68, 0.15);
+        }
         .mosaic-pending {
             background: rgba(255, 255, 255, 0.06);
             border: 2px solid var(--pending-white);
@@ -255,17 +267,43 @@
         .opt2-card {
             background: linear-gradient(135deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
             background-color: #050010;
-            border-left: 4px solid var(--pending-white);
-            border-right: 1px solid rgba(0, 255, 255, 0.3);
-            border-top: 1px solid rgba(0, 255, 255, 0.3);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
             border-radius: 8px;
             padding: 22px;
             width: 100%;
             max-width: 460px;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
             position: relative;
         }
+
+        /* Dynamic Status Colors for Modal */
+        .modal-pending {
+            border-left: 4px solid var(--pending-white);
+            border-right: 1px solid rgba(0, 255, 255, 0.3);
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+        }
+        .modal-pending .opt2-badge { background: rgba(255, 255, 255, 0.2); color: var(--pending-white); }
+        .modal-pending .opt2-pnl-val { color: var(--pending-white); }
+
+        .modal-win {
+            border-left: 4px solid var(--win-green);
+            border-right: 1px solid rgba(0, 255, 0, 0.3);
+            border-top: 1px solid rgba(0, 255, 0, 0.3);
+            border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.15);
+        }
+        .modal-win .opt2-badge { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
+        .modal-win .opt2-pnl-val { color: var(--win-green); }
+
+        .modal-loss {
+            border-left: 4px solid var(--loss-red);
+            border-right: 1px solid rgba(255, 68, 68, 0.3);
+            border-top: 1px solid rgba(255, 68, 68, 0.3);
+            border-bottom: 1px solid rgba(255, 68, 68, 0.3);
+            box-shadow: 0 0 25px rgba(255, 68, 68, 0.15);
+        }
+        .modal-loss .opt2-badge { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
+        .modal-loss .opt2-pnl-val { color: var(--loss-red); }
 
         .close-bet-modal {
             position: absolute;
@@ -293,16 +331,14 @@
             font-family: 'Righteous', cursive;
             letter-spacing: 1px;
             font-size: 0.85rem;
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--pending-white);
         }
 
         .opt2-match {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: bold;
             color: #fff;
             margin-bottom: 10px;
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
         .opt2-details {
@@ -407,11 +443,10 @@
     </header>
 
     <main>
-        <!-- ROAD TO 1M HERO GAUGE -->
         <section class="progress-card">
             <div class="progress-header">
                 <div class="progress-title">ROAD TO 1,000,000 🚀</div>
-                <div class="progress-percentage">1.00%</div>
+                <div class="progress-percentage">1.06%</div>
             </div>
             <div class="gauge-track">
                 <div class="gauge-fill"></div>
@@ -422,42 +457,53 @@
             </div>
         </section>
 
-        <!-- MINI KPI DASHBOARD -->
         <section class="dashboard">
             <div class="stat-box">
                 <div class="stat-label">Current Bankroll</div>
-                <div class="stat-value stat-profit">10,000.00</div>
+                <div class="stat-value stat-profit">10,574.50</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Days In Journey</div>
-                <div class="stat-value">Day 1</div>
+                <div class="stat-value">Day 2</div>
             </div>
         </section>
 
-        <!-- MOSAIC BETS (3 CASES PENDING UNIQUEMENT) -->
         <section class="mosaic-container">
             <div class="mosaic-title">
                 <span>BET HISTORY</span>
                 <span style="font-size:0.8rem; color:#888;">CLICK TILE FOR BETSLIP</span>
             </div>
             <div class="mosaic-grid">
-                <div class="mosaic-item mosaic-pending" onclick="openBet(1)">
+                <!-- BETS DU 31/08 -->
+                <div class="mosaic-item mosaic-pending" onclick="openBet(6)">
                     <span style="font-size:0.55rem; color:#aaa; margin-bottom:2px;">PENDING</span>
-                    <span>@2.14</span>
+                    <span>@27.17</span>
                 </div>
-                <div class="mosaic-item mosaic-pending" onclick="openBet(2)">
+                <div class="mosaic-item mosaic-pending" onclick="openBet(5)">
                     <span style="font-size:0.55rem; color:#aaa; margin-bottom:2px;">PENDING</span>
-                    <span>@2.15</span>
+                    <span>@2.11</span>
                 </div>
+                <div class="mosaic-item mosaic-pending" onclick="openBet(4)">
+                    <span style="font-size:0.55rem; color:#aaa; margin-bottom:2px;">PENDING</span>
+                    <span>@2.06</span>
+                </div>
+
+                <!-- BETS DU 30/08 -->
                 <div class="mosaic-item mosaic-pending" onclick="openBet(3)">
                     <span style="font-size:0.55rem; color:#aaa; margin-bottom:2px;">PENDING</span>
                     <span>@5.01</span>
+                </div>
+                <div class="mosaic-item mosaic-win" onclick="openBet(2)">
+                    <span>+574.50</span>
+                </div>
+                <div class="mosaic-item mosaic-pending" onclick="openBet(1)">
+                    <span style="font-size:0.55rem; color:#aaa; margin-bottom:2px;">PENDING</span>
+                    <span>@2.14</span>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER WITH 3 LEGAL DISCLAIMERS -->
     <footer>
         <div class="footer-links">
             <a onclick="openModal('modal-tos')">TOS</a> |
@@ -469,34 +515,22 @@
 
     <!-- LEGAL MODALS -->
     <div class="modal-overlay" id="modal-legal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal-legal')">✕</span>
-            <h2 class="modal-title">Legal Notice</h2>
-            <p><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p>
-        </div>
+        <div class="modal-content"><span class="close-modal" onclick="closeModal('modal-legal')">✕</span><h2 class="modal-title">Legal Notice</h2><p><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p></div>
     </div>
     <div class="modal-overlay" id="modal-tos">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal-tos')">✕</span>
-            <h2 class="modal-title">Terms of Service</h2>
-            <p>En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous documentons un défi personnel de capitalisation, nous ne sommes pas un bookmaker.</p>
-        </div>
+        <div class="modal-content"><span class="close-modal" onclick="closeModal('modal-tos')">✕</span><h2 class="modal-title">Terms of Service</h2><p>En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous documentons un défi personnel de capitalisation, nous ne sommes pas un bookmaker.</p></div>
     </div>
     <div class="modal-overlay" id="modal-privacy">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('modal-privacy')">✕</span>
-            <h2 class="modal-title">Privacy Policy</h2>
-            <p>Votre email et vos informations personnelles ne seront jamais partagés ni commercialisés auprès de tiers.</p>
-        </div>
+        <div class="modal-content"><span class="close-modal" onclick="closeModal('modal-privacy')">✕</span><h2 class="modal-title">Privacy Policy</h2><p>Votre email et vos informations personnelles ne seront jamais partagés ni commercialisés auprès de tiers.</p></div>
     </div>
 
     <!-- BET DETAIL / BETSLIP MODAL -->
     <div class="modal-overlay" id="bet-modal" onclick="closeBetModal(event)">
-        <div class="opt2-card">
+        <div class="opt2-card" id="modal-card">
             <div class="close-bet-modal" onclick="document.getElementById('bet-modal').style.display='none'">✕</div>
             <div class="opt2-top">
-                <span style="color:#aaa; font-size:0.85rem;" id="modal-date">30.08.2026 • Accumulator</span>
-                <span class="opt2-badge">PENDING</span>
+                <span style="color:#aaa; font-size:0.85rem;" id="modal-date">Date • Accumulator</span>
+                <span class="opt2-badge" id="modal-badge">PENDING</span>
             </div>
             <div class="opt2-match" id="modal-match">🔒 LOCKED — REVEALED AFTER SETTLEMENT</div>
             <div class="opt2-details">
@@ -505,8 +539,8 @@
                 Stake: <span id="modal-stake">0</span> <span id="modal-pct" style="color:var(--neon-gold); font-size:0.85rem;"></span>
             </div>
             <div class="opt2-pnl-box">
-                <span style="font-family:'Righteous',cursive; color:var(--neon-pink); font-size:1.1rem;">STATUS</span>
-                <span style="font-size:1.4rem; font-family:'Righteous',cursive; color:#fff;">PENDING</span>
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink); font-size:1.1rem;">PROFIT / LOSS</span>
+                <span style="font-size:1.6rem; font-family:'Righteous',cursive;" class="opt2-pnl-val" id="modal-pnl">PENDING</span>
             </div>
         </div>
     </div>
@@ -516,18 +550,46 @@
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
         var currentBets = {
-            1: { match: '🔒 LOCKED SELECTIONS', sel: '3 Legs Tennis Acca (Hidden)', odds: '@ 2.14', stake: '500', pct: '(5.0% Bankroll)' },
-            2: { match: '🔒 LOCKED SELECTIONS', sel: '3 Legs Sets Handicap Acca (Hidden)', odds: '@ 2.149', stake: '500', pct: '(5.0% Bankroll)' },
-            3: { match: '🔒 LOCKED SELECTIONS', sel: '5 Legs Tennis Acca (Hidden)', odds: '@ 5.01', stake: '50', pct: '(0.5% Bankroll)' }
+            6: { date: '31.08.2026', match: '🔒 LOCKED SELECTIONS', sel: '10 Legs Tennis Acca (Hidden)', odds: '@ 27.17', stake: '150', pct: '(1.5% Bankroll)', status: 'PENDING', pnl: '0' },
+            5: { date: '31.08.2026', match: '🔒 LOCKED SELECTIONS', sel: '9 Legs Tennis Acca (Hidden)', odds: '@ 2.11', stake: '500', pct: '(5.0% Bankroll)', status: 'PENDING', pnl: '0' },
+            4: { date: '31.08.2026', match: '🔒 LOCKED SELECTIONS', sel: '4 Legs Tennis Acca (Hidden)', odds: '@ 2.06', stake: '500', pct: '(5.0% Bankroll)', status: 'PENDING', pnl: '0' },
+            3: { date: '30.08.2026', match: '🔒 LOCKED SELECTIONS', sel: '5 Legs Tennis Acca (Hidden)', odds: '@ 5.01', stake: '50', pct: '(0.5% Bankroll)', status: 'PENDING', pnl: '0' },
+            2: { 
+                date: '30.08.2026', 
+                match: '1. J. Vrba vs B. Nakashima<br>2. I. Amariei vs A. Lahey<br>3. E. Arango vs X. Wang<br>4. J. Munar Clar vs T. Atmane<br>5. E. Navarro vs L. Boisson', 
+                sel: '1. Sets Handicap: 2 (1.5)<br>2. Sets Handicap: 1 (1.5)<br>3. Sets Handicap: 2 (1.5)<br>4. Sets Handicap: 2 (1.5)<br>5. Sets Handicap: 1 (1.5)', 
+                odds: '@ 2.149', 
+                stake: '500', 
+                pct: '(5.0% Bankroll)', 
+                status: 'WIN', 
+                pnl: '574.50' 
+            },
+            1: { date: '30.08.2026', match: '🔒 LOCKED SELECTIONS', sel: '3 Legs Tennis Acca (Hidden)', odds: '@ 2.14', stake: '500', pct: '(5.0% Bankroll)', status: 'PENDING', pnl: '0' }
         };
 
         function openBet(num) {
             var b = currentBets[num];
-            document.getElementById('modal-match').innerText = b.match;
-            document.getElementById('modal-selection').innerText = b.sel;
+            document.getElementById('modal-date').innerText = b.date + ' • Accumulator';
+            document.getElementById('modal-match').innerHTML = b.match;
+            document.getElementById('modal-selection').innerHTML = b.sel;
             document.getElementById('modal-odds').innerText = b.odds;
             document.getElementById('modal-stake').innerText = b.stake;
             document.getElementById('modal-pct').innerText = b.pct;
+            
+            var card = document.getElementById('modal-card');
+            card.className = 'opt2-card modal-' + b.status.toLowerCase();
+            
+            document.getElementById('modal-badge').innerText = b.status === 'WIN' ? 'WON' : b.status;
+            
+            var pnlEl = document.getElementById('modal-pnl');
+            if (b.status === 'WIN') {
+                pnlEl.innerText = '+' + b.pnl;
+            } else if (b.status === 'LOSS') {
+                pnlEl.innerText = '-' + b.pnl;
+            } else {
+                pnlEl.innerText = 'PENDING';
+            }
+            
             document.getElementById('bet-modal').style.display = 'flex';
         }
 
@@ -538,33 +600,33 @@
         }
 
         /* TELEGRAM VISITOR TRACKER */
-        var TELEGRAM_BOT_TOKEN = '8875284658:AAHrSOIAi6OX_oMGyXMIYCoO4GdyLSInMnE';[span_0](start_span)[span_0](end_span)
-        var TELEGRAM_CHAT_ID = '1403873724';[span_1](start_span)[span_1](end_span)
+        var TELEGRAM_BOT_TOKEN = '8875284658:AAHrSOIAi6OX_oMGyXMIYCoO4GdyLSInMnE';
+        var TELEGRAM_CHAT_ID = '1403873724';
 
         async function trackVisitorDetailed() {
             try {
-                var source = document.referrer ? document.referrer : 'Accès Direct';[span_2](start_span)[span_2](end_span)
-                var userAgent = navigator.userAgent;[span_3](start_span)[span_3](end_span)
-                var lang = navigator.language || navigator.userLanguage;[span_4](start_span)[span_4](end_span)
+                var source = document.referrer ? document.referrer : 'Accès Direct';
+                var userAgent = navigator.userAgent;
+                var lang = navigator.language || navigator.userLanguage;
 
-                var device = "PC / Desktop";[span_5](start_span)[span_5](end_span)
-                if (/iPhone|iPad|iPod/i.test(userAgent)) device = "iPhone / iOS";[span_6](start_span)[span_6](end_span)
-                else if (/Android/i.test(userAgent)) device = "Smartphone Android";[span_7](start_span)[span_7](end_span)
+                var device = "PC / Desktop";
+                if (/iPhone|iPad|iPod/i.test(userAgent)) device = "iPhone / iOS";
+                else if (/Android/i.test(userAgent)) device = "Smartphone Android";
 
-                var locationText = "Inconnue";[span_8](start_span)[span_8](end_span)
+                var locationText = "Inconnue";
                 try {
-                    var res = await fetch('https://ipapi.co/json/');[span_9](start_span)[span_9](end_span)
-                    if (res.ok) {[span_10](start_span)[span_10](end_span)
-                        var data = await res.json();[span_11](start_span)[span_11](end_span)
-                        locationText = (data.city || 'Ville inconnue') + ', ' + (data.country_name || 'Pays inconnu');[span_12](start_span)[span_12](end_span)
+                    var res = await fetch('https://ipapi.co/json/');
+                    if (res.ok) {
+                        var data = await res.json();
+                        locationText = (data.city || 'Ville inconnue') + ', ' + (data.country_name || 'Pays inconnu');
                     }
                 } catch (e) {}
 
-                var time = new Date().toLocaleTimeString('fr-FR');[span_13](start_span)[span_13](end_span)
-                var message = '🚨 ONEFUCKINGMILLION : NOUVEAU VISITEUR\n\n📍 Localisation: ' + locationText + '\n📱 Appareil: ' + device + '\n🌐 Langue: ' + lang + '\n🔗 Source: ' + source + '\n⏱️ Heure: ' + time;[span_14](start_span)[span_14](end_span)
+                var time = new Date().toLocaleTimeString('fr-FR');
+                var message = '🚨 ONEFUCKINGMILLION : NOUVEAU VISITEUR\n\n📍 Localisation: ' + locationText + '\n📱 Appareil: ' + device + '\n🌐 Langue: ' + lang + '\n🔗 Source: ' + source + '\n⏱️ Heure: ' + time;
 
-                var img = new Image();[span_15](start_span)[span_15](end_span)
-                img.src = 'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage?chat_id=' + TELEGRAM_CHAT_ID + '&text=' + encodeURIComponent(message);[span_16](start_span)[span_16](end_span)
+                var img = new Image();
+                img.src = 'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage?chat_id=' + TELEGRAM_CHAT_ID + '&text=' + encodeURIComponent(message);
             } catch (err) {}
         }
 
