@@ -30,7 +30,10 @@
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 40px 40px;
+            overflow-x: hidden;
         }
+
+        a { text-decoration: none; color: inherit; }
 
         header {
             width: 100%; height: 60px; padding: 0 20px; display: flex;
@@ -40,7 +43,7 @@
         }
 
         .logo-home {
-            text-decoration: none; font-family: 'Righteous', cursive; font-size: 1.8rem;
+            font-family: 'Righteous', cursive; font-size: 1.8rem;
             color: var(--neon-pink); display: inline-flex; align-items: center; gap: 10px;
             text-shadow: 0 0 10px var(--neon-pink); letter-spacing: 1px;
         }
@@ -87,12 +90,13 @@
         .bg-win { background: rgba(0, 255, 0, 0.15); border: 2px solid var(--win-green); color: var(--win-green); box-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
         .bg-loss { background: rgba(255, 68, 68, 0.15); border: 2px solid var(--loss-red); color: var(--loss-red); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
 
-        /* MODAL Reworked to avoid AI citation injections */
+        /* MODALES PUR CSS AVEC :TARGET */
         .pop-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 100;
+            background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(5px); z-index: 9999;
             justify-content: center; align-items: center; padding: 15px;
         }
+        .pop-overlay:target { display: flex !important; }
 
         .pop-card {
             background: linear-gradient(135deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
@@ -102,8 +106,14 @@
         .card-win { border-left: 4px solid var(--win-green); border-right: 1px solid rgba(0, 255, 0, 0.3); border-top: 1px solid rgba(0, 255, 0, 0.3); border-bottom: 1px solid rgba(0, 255, 0, 0.3); box-shadow: 0 0 25px rgba(0, 255, 0, 0.15); }
         .card-loss { border-left: 4px solid var(--loss-red); border-right: 1px solid rgba(255, 68, 68, 0.3); border-top: 1px solid rgba(255, 68, 68, 0.3); border-bottom: 1px solid rgba(255, 68, 68, 0.3); box-shadow: 0 0 25px rgba(255, 68, 68, 0.15); }
 
-        .pop-close { position: absolute; top: 10px; right: 15px; color: #fff; font-size: 1.5rem; cursor: pointer; font-family: sans-serif; opacity: 0.7; }
-        
+        .pop-close {
+            position: absolute; top: 10px; right: 15px; color: #fff; font-size: 1.5rem;
+            cursor: pointer; font-family: sans-serif; opacity: 0.7; z-index: 2;
+        }
+        .pop-backdrop-link {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+        }
+
         .pop-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; margin-top: 5px; flex-shrink: 0; }
         .pop-badge { padding: 3px 8px; border-radius: 3px; font-weight: bold; font-family: 'Righteous', cursive; }
         .card-win .pop-badge { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
@@ -133,7 +143,7 @@
 
         footer { width: 100%; background: #000; height: 50px; text-align: center; border-top: 1px solid #222; color: #888; font-size: 0.8rem; margin-top: auto; display: flex; flex-direction: column; justify-content: center; }
         .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
-        .pop-basic-content { background: #0a0a0a; border: 2px solid var(--neon-cyan); padding: 30px; width: 90%; max-width: 600px; color: #fff; position: relative; }
+        .pop-basic-content { background: #0a0a0a; border: 2px solid var(--neon-cyan); padding: 30px; width: 90%; max-width: 600px; color: #fff; position: relative; z-index: 2; }
     </style>
 </head>
 <body>
@@ -176,134 +186,110 @@
                 <span>BET HISTORY (NEW TO OLD)</span>
             </div>
             <div class="mosaic-grid">
-                <div class="mosaic-item bg-loss" onclick="openSlip(6)">-150</div>
-                <div class="mosaic-item bg-win" onclick="openSlip(5)">+555</div>
-                <div class="mosaic-item bg-win" onclick="openSlip(4)">+530</div>
-                <div class="mosaic-item bg-loss" onclick="openSlip(3)">-150</div>
-                <div class="mosaic-item bg-win" onclick="openSlip(2)">+574.50</div>
-                <div class="mosaic-item bg-win" onclick="openSlip(1)">+570</div>
+                <a href="#slip-6" class="mosaic-item bg-loss">-150</a>
+                <a href="#slip-5" class="mosaic-item bg-win">+555</a>
+                <a href="#slip-4" class="mosaic-item bg-win">+530</a>
+                <a href="#slip-3" class="mosaic-item bg-loss">-150</a>
+                <a href="#slip-2" class="mosaic-item bg-win">+574.50</a>
+                <a href="#slip-1" class="mosaic-item bg-win">+570</a>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="footer-links">
-            <a onclick="document.getElementById('modal-tos').style.display='flex'">TOS</a> |
-            <a onclick="document.getElementById('modal-privacy').style.display='flex'">Privacy</a> |
-            <a onclick="document.getElementById('modal-legal').style.display='flex'">Legal Notice</a>
+            <a href="#modal-tos">TOS</a> |
+            <a href="#modal-privacy">Privacy</a> |
+            <a href="#modal-legal">Legal Notice</a>
         </div>
         <p style="margin-top:4px;">&copy; 2026 OneFuckingMillion.com</p>
     </footer>
 
     <!-- LEGAL MODALS -->
-    <div class="pop-overlay" id="modal-legal" onclick="if(event.target.id === 'modal-legal') this.style.display='none'">
-        <div class="pop-basic-content"><span class="pop-close" onclick="document.getElementById('modal-legal').style.display='none'">X</span><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Legal Notice</h2><p style="margin-top:10px;"><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p></div>
+    <div class="pop-overlay" id="modal-legal">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-basic-content"><a href="#" class="pop-close">✕</a><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Legal Notice</h2><p style="margin-top:10px;"><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p></div>
     </div>
-    <div class="pop-overlay" id="modal-tos" onclick="if(event.target.id === 'modal-tos') this.style.display='none'">
-        <div class="pop-basic-content"><span class="pop-close" onclick="document.getElementById('modal-tos').style.display='none'">X</span><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Terms of Service</h2><p style="margin-top:10px;">En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous documentons un défi personnel de capitalisation, nous ne sommes pas un bookmaker.</p></div>
+    <div class="pop-overlay" id="modal-tos">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-basic-content"><a href="#" class="pop-close">✕</a><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Terms of Service</h2><p style="margin-top:10px;">En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous documentons un défi personnel de capitalisation, nous ne sommes pas un bookmaker.</p></div>
     </div>
-    <div class="pop-overlay" id="modal-privacy" onclick="if(event.target.id === 'modal-privacy') this.style.display='none'">
-        <div class="pop-basic-content"><span class="pop-close" onclick="document.getElementById('modal-privacy').style.display='none'">X</span><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Privacy Policy</h2><p style="margin-top:10px;">Votre email et vos informations personnelles ne seront jamais partagés ni commercialisés auprès de tiers.</p></div>
+    <div class="pop-overlay" id="modal-privacy">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-basic-content"><a href="#" class="pop-close">✕</a><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Privacy Policy</h2><p style="margin-top:10px;">Votre email et vos informations personnelles ne seront jamais partagés ni commercialisés auprès de tiers.</p></div>
     </div>
 
-    <!-- BET DETAIL MODAL -->
-    <div class="pop-overlay" id="main-bet-modal" onclick="if(event.target.id === 'main-bet-modal') this.style.display='none'">
-        <div class="pop-card" id="ui-card">
-            <div class="pop-close" onclick="document.getElementById('main-bet-modal').style.display='none'">✕</div>
-            
+    <!-- SLIP 6 EN DUR -->
+    <div class="pop-overlay" id="slip-6">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-card card-loss">
+            <a href="#" class="pop-close">✕</a>
             <div class="pop-topbar">
-                <span style="color:#aaa; font-size:0.85rem;" id="ui-tourney">Date • Tournoi</span>
-                <span class="pop-badge" id="ui-badge">WON</span>
+                <span style="color:#aaa; font-size:0.85rem;">31.08.2026 • Accumulator (10 Legs)</span>
+                <span class="pop-badge">LOST</span>
             </div>
-
-            <div class="pop-scroll" id="ui-legs-container"></div>
-
+            <div class="pop-scroll">
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. R. Safiullin vs C. Alcaraz</div><div class="slip-pick">Vainqueur : C. Alcaraz (4-6, 4-6, 4-6)</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. M. Chwalinska vs T. Townsend</div><div class="slip-pick">Vainqueur : T. Townsend (2-6, 3-6)</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">3. D. Snigur vs D. Shnaider</div><div class="slip-pick">Vainqueur : D. Shnaider (0-6, 4-6)</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">4. T. Zidansek vs M. Timofeeva</div><div class="slip-pick">Vainqueur : M. Timofeeva (3-6, 5-7)</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">5. L. Darderi vs H. Wendelken</div><div class="slip-pick">Vainqueur : L. Darderi (6-3, 6-7, 6-2, 7-5)</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-loss"><div class="slip-info"><div class="slip-match">6. J. Shang vs M. Trungelliti</div><div class="slip-pick">Vainqueur : J. Shang (6-0, 6-7, 6-1, 3-6, 4-6)</div></div><span class="slip-badge badge-lost">LOSS</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">7. Y. Hanfmann vs A. Tabilo</div><div class="slip-pick">Vainqueur : A. Tabilo (3-6, 2-6, 7-6, 3-6)</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">8. Q. Halys vs F. Diaz Acosta</div><div class="slip-pick">Vainqueur : Q. Halys (6-4, 7-5, 6-7, 6-1)</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">9. R. A. Burruchaga vs K. Khachanov</div><div class="slip-pick">Vainqueur : K. Khachanov (3-6, 0-6, 1-6)</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">10. E. Cocciaretto vs K. Siniakova</div><div class="slip-pick">Vainqueur : K. Siniakova (3-6, 2-6)</div></div><span class="slip-badge badge-won">WON</span></div>
+            </div>
             <div class="pop-details">
-                Stake: <span id="ui-stake" style="color:#fff; font-weight:bold;">0</span> <span id="ui-pct" style="color:var(--neon-gold); font-size:0.85rem;"></span><br>
-                Total Odds: <span id="ui-odds" style="color:#fff; font-weight:bold;">@ 0.00</span>
+                Stake: <span style="color:#fff; font-weight:bold;">150</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(1.5% Bankroll)</span><br>
+                Total Odds: <span style="color:#fff; font-weight:bold;">@ 27.17</span>
             </div>
-            
             <div class="pop-pnl-box">
                 <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
-                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val" id="ui-pnl">+0.00</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">-150.00</span>
             </div>
         </div>
     </div>
 
-    <script>
-        var myBets = [
-            { id: 6, date: '31.08.2026', tournament: 'Accumulator (10 Legs)', odds: 27.17, stake: '150', pct: '(1.5% Bankroll)', status: 'LOSS', badge: 'LOSS', pnl: '-150.00',
-              legs: [
-                  { match: 'R. Safiullin vs C. Alcaraz', pick: 'Vainqueur : C. Alcaraz', won: true },
-                  { match: 'M. Chwalinska vs T. Townsend', pick: 'Vainqueur : T. Townsend', won: true },
-                  { match: 'D. Snigur vs D. Shnaider', pick: 'Vainqueur : D. Shnaider', won: true },
-                  { match: 'T. Zidansek vs M. Timofeeva', pick: 'Vainqueur : M. Timofeeva', won: true },
-                  { match: 'L. Darderi vs H. Wendelken', pick: 'Vainqueur : L. Darderi', won: true },
-                  { match: 'J. Shang vs M. Trungelliti', pick: 'Vainqueur : J. Shang (2-3)', won: false },
-                  { match: 'Y. Hanfmann vs A. Tabilo', pick: 'Vainqueur : A. Tabilo', won: true },
-                  { match: 'Q. Halys vs F. Diaz Acosta', pick: 'Vainqueur : Q. Halys', won: true },
-                  { match: 'R. A. Burruchaga vs K. Khachanov', pick: 'Vainqueur : K. Khachanov', won: true },
-                  { match: 'E. Cocciaretto vs K. Siniakova', pick: 'Vainqueur : K. Siniakova', won: true }
-              ] },
-            { id: 5, date: '31.08.2026', tournament: 'Accumulator (9 Legs)', odds: 2.11, stake: '500', pct: '(5.0% Bankroll)', status: 'WIN', badge: 'WON', pnl: '+555.00',
-              legs: [
-                  { match: 'M. Chwalinska vs T. Townsend', pick: 'Townsend gagne un set: Oui', won: true },
-                  { match: 'D. Snigur vs D. Shnaider', pick: 'Shnaider gagne un set: Oui', won: true },
-                  { match: 'T. Zidansek vs M. Timofeeva', pick: 'Timofeeva gagne un set: Oui', won: true },
-                  { match: 'L. Darderi vs H. Wendelken', pick: 'Darderi gagne un set: Oui', won: true },
-                  { match: 'R. Safiullin vs C. Alcaraz', pick: 'Alcaraz gagne un set: Oui', won: true },
-                  { match: 'J. Shang vs M. Trungelliti', pick: 'Shang gagne un set: Oui', won: true },
-                  { match: 'Y. Hanfmann vs A. Tabilo', pick: 'Tabilo gagne un set: Oui', won: true },
-                  { match: 'Q. Halys vs F. Diaz Acosta', pick: 'Halys gagne un set: Oui', won: true },
-                  { match: 'R. Burruchaga vs K. Khachanov', pick: 'Khachanov gagne un set: Oui', won: true }
-              ] },
-            { id: 4, date: '31.08.2026', tournament: 'Accumulator (4 Legs)', odds: 2.06, stake: '500', pct: '(5.0% Bankroll)', status: 'WIN', badge: 'WON', pnl: '+530.00',
-              legs: [
-                  { match: 'R. Safiullin vs C. Alcaraz', pick: 'Vainqueur du match : Alcaraz', won: true },
-                  { match: 'R. Burruchaga vs K. Khachanov', pick: 'Vainqueur du match : Khachanov', won: true },
-                  { match: 'L. Darderi vs H. Wendelken', pick: 'Vainqueur du match : Darderi', won: true },
-                  { match: 'J. Shang vs M. Trungelliti', pick: 'Shang gagne un set : Oui', won: true }
-              ] },
-            { id: 3, date: '30.08.2026', tournament: 'Accumulator (5 Legs)', odds: 5.01, stake: '150', pct: '(1.5% Bankroll)', status: 'LOSS', badge: 'LOSS', pnl: '-150.00',
-              legs: [
-                  { match: 'I. Amariei vs A. Lahey', pick: 'Vainqueur : Amariei (1:2)', won: false },
-                  { match: 'J. Vrba vs B. Nakashima', pick: 'Vainqueur : Nakashima', won: true },
-                  { match: 'J. Munar vs T. Atmane', pick: 'Vainqueur : Atmane (3:2)', won: false },
-                  { match: 'E. Arango vs X. Wang', pick: 'Vainqueur : Wang', won: true },
-                  { match: 'E. Navarro vs L. Boisson', pick: 'Vainqueur : Navarro', won: true }
-              ] },
-            { id: 2, date: '30.08.2026', tournament: 'Accumulator (5 Legs)', odds: 2.149, stake: '500', pct: '(5.0% Bankroll)', status: 'WIN', badge: 'WON', pnl: '+574.50',
-              legs: [
-                  { match: 'J. Vrba vs B. Nakashima', pick: 'Sets Handicap: Nakashima (+1.5)', won: true },
-                  { match: 'I. Amariei vs A. Lahey', pick: 'Sets Handicap: Amariei (+1.5)', won: true },
-                  { match: 'E. Arango vs X. Wang', pick: 'Sets Handicap: Wang (+1.5)', won: true },
-                  { match: 'J. Munar vs T. Atmane', pick: 'Sets Handicap: Atmane (+1.5)', won: true },
-                  { match: 'E. Navarro vs L. Boisson', pick: 'Sets Handicap: Navarro (+1.5)', won: true }
-              ] },
-            { id: 1, date: '30.08.2026', tournament: 'Accumulator (3 Legs)', odds: 2.14, stake: '500', pct: '(5.0% Bankroll)', status: 'WIN', badge: 'WON', pnl: '+570.00',
-              legs: [
-                  { match: 'E. Arango vs X. Wang', pick: 'Wang ML', won: true },
-                  { match: 'E. Navarro vs L. Boisson', pick: 'Navarro ML', won: true },
-                  { match: 'J. Munar vs T. Atmane', pick: 'Atmane Sets Handicap (+1.5)', won: true }
-              ] }
-        ];
+    <!-- SLIP 5 EN DUR -->
+    <div class="pop-overlay" id="slip-5">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-card card-win">
+            <a href="#" class="pop-close">✕</a>
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;">31.08.2026 • Accumulator (9 Legs)</span>
+                <span class="pop-badge">WON</span>
+            </div>
+            <div class="pop-scroll">
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. M. Chwalinska vs T. Townsend</div><div class="slip-pick">Townsend gagne un set: Oui</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. D. Snigur vs D. Shnaider</div><div class="slip-pick">Shnaider gagne un set: Oui</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">3. T. Zidansek vs M. Timofeeva</div><div class="slip-pick">Timofeeva gagne un set: Oui</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">4. L. Darderi vs H. Wendelken</div><div class="slip-pick">Darderi gagne un set: Oui</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">5. R. Safiullin vs C. Alcaraz</div><div class="slip-pick">Alcaraz gagne un set: Oui</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">6. J. Shang vs M. Trungelliti</div><div class="slip-pick">Shang gagne un set: Oui</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">7. Y. Hanfmann vs A. Tabilo</div><div class="slip-pick">Tabilo gagne un set: Oui</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">8. Q. Halys vs F. Diaz Acosta</div><div class="slip-pick">Halys gagne un set: Oui</div></div><span class="slip-badge badge-won">WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">9. R. Burruchaga vs K. Khachanov</div><div class="slip-pick">Khachanov gagne un set: Oui</div></div><span class="slip-badge badge-won">WON</span></div>
+            </div>
+            <div class="pop-details">
+                Stake: <span style="color:#fff; font-weight:bold;">500</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(5.0% Bankroll)</span><br>
+                Total Odds: <span style="color:#fff; font-weight:bold;">@ 2.11</span>
+            </div>
+            <div class="pop-pnl-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">+555.00</span>
+            </div>
+        </div>
+    </div>
 
-        function openSlip(id) {
-            var bet = null;
-            for (var i = 0; i < myBets.length; i++) {
-                if (myBets[i].id === id) { bet = myBets[i]; break; }
-            }
-            if (!bet) return;
-
-            document.getElementById('ui-tourney').innerText = bet.date + ' • ' + bet.tournament;
-            document.getElementById('ui-stake').innerText = bet.stake;
-            document.getElementById('ui-pct').innerText = bet.pct;
-            document.getElementById('ui-odds').innerText = '@ ' + bet.odds;
-            document.getElementById('ui-badge').innerText = bet.badge;
-            document.getElementById('ui-pnl').innerText = (bet.status === 'WIN' ? '+' : '') + bet.pnl;
-
-            var card = document.getElementById('ui-card');
-            card.classList.remove('card-win', 'card-loss');
-            card.classList.add(bet.status === 'WIN' ? 'card-win' : 'card-loss');
-
-            var container = docu
+    <!-- SLIP 4 EN DUR -->
+    <div class="pop-overlay" id="slip-4">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-card card-win">
+            <a href="#" class="pop-close">✕</a>
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;">31.08.2026 • Accumulator (4 Legs)</span>
+                <span class="pop-badge">WON</span>
+            </div>
+            <div class="pop-scroll">
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1.
