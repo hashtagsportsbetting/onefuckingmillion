@@ -90,13 +90,17 @@
         .bg-win { background: rgba(0, 255, 0, 0.15); border: 2px solid var(--win-green); color: var(--win-green); box-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
         .bg-loss { background: rgba(255, 68, 68, 0.15); border: 2px solid var(--loss-red); color: var(--loss-red); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
 
-        /* MODALES PUR CSS AVEC :TARGET */
+        /* MODALES PUR CSS FIABLES (VISIBILITY / OPACITY) */
         .pop-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            visibility: hidden; opacity: 0; pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(5px); z-index: 9999;
-            justify-content: center; align-items: center; padding: 15px;
+            display: flex; justify-content: center; align-items: center; padding: 15px;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
         }
-        .pop-overlay:target { display: flex !important; }
+        .pop-overlay:target {
+            visibility: visible; opacity: 1; pointer-events: auto;
+        }
 
         .pop-card {
             background: linear-gradient(135deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
@@ -289,7 +293,4 @@
             <a href="#" class="pop-close">✕</a>
             <div class="pop-topbar">
                 <span style="color:#aaa; font-size:0.85rem;">31.08.2026 • Accumulator (4 Legs)</span>
-                <span class="pop-badge">WON</span>
-            </div>
-            <div class="pop-scroll">
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1.
+     
