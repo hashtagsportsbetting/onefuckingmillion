@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -233,8 +232,8 @@
             cursor: pointer;
             user-select: none;
             min-height: 70px;
+            width: 100%;
             border: 2px solid transparent;
-            touch-action: manipulation;
         }
 
         .mosaic-tile:active { transform: scale(0.95); }
@@ -252,12 +251,12 @@
             box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
         }
 
-        /* MODALES */
+        /* MODALE PLEIN ÉCRAN */
         .modal-wrap {
             display: none;
             position: fixed;
             top: 0; left: 0;
-            width: 100vw; height: 100vh;
+            width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.88);
             backdrop-filter: blur(5px);
             z-index: 99999;
@@ -267,7 +266,7 @@
         }
 
         .opt2-card {
-            background: linear-gradient(135deg, #120024 0%, #080012 100%);
+            background: #080012;
             border-radius: 10px;
             padding: 20px;
             width: 100%;
@@ -283,7 +282,6 @@
             border-right: 1px solid rgba(0, 255, 0, 0.4);
             border-top: 1px solid rgba(0, 255, 0, 0.4);
             border-bottom: 1px solid rgba(0, 255, 0, 0.4);
-            box-shadow: 0 0 25px rgba(0, 255, 0, 0.2);
         }
         .modal-card-win .badge-state { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
         .modal-card-win .pnl-state { color: var(--win-green); }
@@ -293,30 +291,27 @@
             border-right: 1px solid rgba(255, 68, 68, 0.4);
             border-top: 1px solid rgba(255, 68, 68, 0.4);
             border-bottom: 1px solid rgba(255, 68, 68, 0.4);
-            box-shadow: 0 0 25px rgba(255, 68, 68, 0.2);
         }
         .modal-card-loss .badge-state { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
         .modal-card-loss .pnl-state { color: var(--loss-red); }
 
         .btn-close {
             position: absolute;
-            top: 10px;
-            right: 14px;
+            top: 8px;
+            right: 12px;
             color: #fff;
             font-size: 1.6rem;
             cursor: pointer;
             line-height: 1;
-            opacity: 0.8;
-            padding: 5px 10px;
+            padding: 6px 10px;
         }
-        .btn-close:hover { opacity: 1; color: var(--neon-pink); }
 
         .opt2-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
-            padding-right: 35px;
+            padding-right: 30px;
         }
 
         .badge-state {
@@ -455,20 +450,20 @@
                 <span style="font-size:0.8rem; color:#888;">CLICK TILE FOR BETSLIP</span>
             </div>
             <div class="mosaic-grid">
-                <div class="mosaic-tile tile-loss" onclick="openBox('slip-6')">-150</div>
-                <div class="mosaic-tile tile-win" onclick="openBox('slip-5')">+555</div>
-                <div class="mosaic-tile tile-win" onclick="openBox('slip-4')">+530</div>
-                <div class="mosaic-tile tile-loss" onclick="openBox('slip-3')">-150</div>
-                <div class="mosaic-tile tile-win" onclick="openBox('slip-2')">+574.50</div>
-                <div class="mosaic-tile tile-win" onclick="openBox('slip-1')">+570</div>
+                <button type="button" class="mosaic-tile tile-loss" onclick="document.getElementById('slip-6').style.display='flex'">-150</button>
+                <button type="button" class="mosaic-tile tile-win" onclick="document.getElementById('slip-5').style.display='flex'">+555</button>
+                <button type="button" class="mosaic-tile tile-win" onclick="document.getElementById('slip-4').style.display='flex'">+530</button>
+                <button type="button" class="mosaic-tile tile-loss" onclick="document.getElementById('slip-3').style.display='flex'">-150</button>
+                <button type="button" class="mosaic-tile tile-win" onclick="document.getElementById('slip-2').style.display='flex'">+574.50</button>
+                <button type="button" class="mosaic-tile tile-win" onclick="document.getElementById('slip-1').style.display='flex'">+570</button>
             </div>
         </section>
     </main>
 
     <!-- SLIP 6 (10 LEGS) -->
-    <div class="modal-wrap" id="slip-6" onclick="closeBox(event, 'slip-6')">
+    <div class="modal-wrap" id="slip-6" onclick="if(event.target===this) this.style.display='none'">
         <div class="opt2-card modal-card-loss">
-            <div class="btn-close" onclick="forceClose('slip-6')">✕</div>
+            <div class="btn-close" onclick="document.getElementById('slip-6').style.display='none'">✕</div>
             <div class="opt2-top">
                 <span style="color:#aaa; font-size:0.85rem;">31.08.2026 • Accumulator (10 Legs)</span>
                 <span class="badge-state">LOST</span>
@@ -491,9 +486,9 @@
     </div>
 
     <!-- SLIP 5 (9 LEGS) -->
-    <div class="modal-wrap" id="slip-5" onclick="closeBox(event, 'slip-5')">
+    <div class="modal-wrap" id="slip-5" onclick="if(event.target===this) this.style.display='none'">
         <div class="opt2-card modal-card-win">
-            <div class="btn-close" onclick="forceClose('slip-5')">✕</div>
+            <div class="btn-close" onclick="document.getElementById('slip-5').style.display='none'">✕</div>
             <div class="opt2-top">
                 <span style="color:#aaa; font-size:0.85rem;">31.08.2026 • Accumulator (9 Legs)</span>
                 <span class="badge-state">WON</span>
@@ -505,5 +500,4 @@
                 <div class="pick-row won-pick"><div class="pick-info"><strong>4. L. Darderi vs H. Wendelken</strong><br><span style="color:#aaa; font-size:0.78rem;">Darderi to win a set (1.04)</span></div><span class="pick-status-icon">✓</span></div>
                 <div class="pick-row won-pick"><div class="pick-info"><strong>5. R. Safiullin vs C. Alcaraz</strong><br><span style="color:#aaa; font-size:0.78rem;">Alcaraz to win a set (1.02)</span></div><span class="pick-status-icon">✓</span></div>
                 <div class="pick-row won-pick"><div class="pick-info"><strong>6. J. Shang vs M. Trungelliti</strong><br><span style="color:#aaa; font-size:0.78rem;">Shang to win a set (1.07)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>7. Y. Hanfmann vs A. Tabilo</strong><br><span style="color:#aaa; font-size:0.78rem;">Tabilo to win a set (1.11)</span></div><span class="pick-status-icon">✓</span></div>
-            
+                <div class="pick-row won-pick"><div class="p
