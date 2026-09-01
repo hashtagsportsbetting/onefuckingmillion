@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-
     <title>#1M — From 10K to 1M</title>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
@@ -20,7 +17,7 @@
             --loss-red: #ff4444;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--dark-bg);
@@ -33,7 +30,6 @@
                 linear-gradient(var(--grid-color) 1px, transparent 1px),
                 linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 40px 40px;
-            overflow-x: hidden;
         }
 
         header {
@@ -46,13 +42,10 @@
         .logo-home {
             text-decoration: none; font-family: 'Righteous', cursive; font-size: 1.8rem;
             color: var(--neon-pink); display: inline-flex; align-items: center; gap: 10px;
-            text-shadow: 0 0 10px var(--neon-pink); letter-spacing: 1px; line-height: 1;
+            text-shadow: 0 0 10px var(--neon-pink); letter-spacing: 1px;
         }
 
-        .brand-emojis { font-size: 1.15rem; letter-spacing: 3px; display: inline-flex; align-items: center; }
-
-        .header-tagline { font-size: 0.85rem; color: var(--neon-cyan); text-transform: uppercase; letter-spacing: 1.5px; display: none; }
-        @media(min-width: 650px) { .header-tagline { display: block; } }
+        .brand-emojis { font-size: 1.15rem; letter-spacing: 3px; }
 
         main {
             flex: 1; padding: 20px 14px 40px 14px; display: flex; flex-direction: column;
@@ -66,83 +59,81 @@
         }
 
         .progress-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
-        .progress-title { font-family: 'Righteous', cursive; font-size: 1.3rem; color: #fff; text-shadow: 0 0 8px var(--neon-pink); letter-spacing: 1px; }
+        .progress-title { font-family: 'Righteous', cursive; font-size: 1.3rem; color: #fff; text-shadow: 0 0 8px var(--neon-pink); }
         .progress-percentage { font-family: 'Righteous', cursive; font-size: 1.6rem; color: var(--neon-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
 
-        .gauge-track { width: 100%; height: 22px; background: rgba(0, 0, 0, 0.8); border: 1px solid var(--neon-cyan); border-radius: 12px; overflow: hidden; position: relative; padding: 2px; }
-        .gauge-fill { height: 100%; width: 1.20%; background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--win-green)); border-radius: 8px; box-shadow: 0 0 15px var(--neon-cyan); }
-        .gauge-milestones { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.85rem; color: #888; text-transform: uppercase; }
+        .gauge-track { width: 100%; height: 22px; background: rgba(0, 0, 0, 0.8); border: 1px solid var(--neon-cyan); border-radius: 12px; overflow: hidden; padding: 2px; }
+        .gauge-fill { height: 100%; width: 1.19%; background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--win-green)); border-radius: 8px; box-shadow: 0 0 15px var(--neon-cyan); }
+        .gauge-milestones { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.85rem; color: #888; }
         .gauge-milestones span.active { color: var(--neon-cyan); font-weight: bold; }
 
         .dashboard { width: 100%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .stat-box { background: rgba(0, 255, 255, 0.04); border: 1px solid var(--neon-cyan); border-radius: 8px; padding: 16px 12px; text-align: center; box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.08); }
-        .stat-label { font-size: 0.8rem; color: #aaa; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.8px; }
+        .stat-box { background: rgba(0, 255, 255, 0.04); border: 1px solid var(--neon-cyan); border-radius: 8px; padding: 16px 12px; text-align: center; }
+        .stat-label { font-size: 0.8rem; color: #aaa; margin-bottom: 6px; }
         .stat-value { font-family: 'Righteous', cursive; font-size: 1.5rem; color: #fff; }
         .stat-profit { color: var(--win-green); text-shadow: 0 0 8px rgba(0, 255, 0, 0.4); }
 
         .mosaic-container { width: 100%; }
-        .mosaic-title { font-size: 1.1rem; color: var(--neon-cyan); margin-bottom: 14px; border-bottom: 1px solid #222; padding-bottom: 6px; display: flex; justify-content: space-between; }
+        .mosaic-title { font-size: 1.1rem; color: var(--neon-cyan); margin-bottom: 14px; border-bottom: 1px solid #222; padding-bottom: 6px; }
         .mosaic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
         @media(min-width: 600px) { .mosaic-grid { grid-template-columns: repeat(6, 1fr); } }
 
         .mosaic-item {
-            aspect-ratio: 1; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; border-radius: 6px; font-family: 'Righteous', cursive;
-            font-size: 1.05rem; cursor: pointer; transition: transform 0.1s; user-select: none;
+            aspect-ratio: 1; display: flex; justify-content: center; align-items: center; border-radius: 6px;
+            font-family: 'Righteous', cursive; font-size: 1.05rem; cursor: pointer; user-select: none;
         }
         .mosaic-item:active { transform: scale(0.95); }
-        .mosaic-win { background: rgba(0, 255, 0, 0.15); border: 2px solid var(--win-green); color: var(--win-green); box-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
-        .mosaic-loss { background: rgba(255, 68, 68, 0.15); border: 2px solid var(--loss-red); color: var(--loss-red); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
 
-        /* STRUCTURE MODAL BASEE SUR TON MODELE FONCTIONNEL */
-        .modal-overlay {
+        .bg-win { background: rgba(0, 255, 0, 0.15); border: 2px solid var(--win-green); color: var(--win-green); box-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
+        .bg-loss { background: rgba(255, 68, 68, 0.15); border: 2px solid var(--loss-red); color: var(--loss-red); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
+
+        /* MODAL Reworked to avoid AI citation injections */
+        .pop-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 100;
             justify-content: center; align-items: center; padding: 15px;
         }
 
-        .opt2-card {
+        .pop-card {
             background: linear-gradient(135deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
             background-color: #050010; border-radius: 8px; padding: 20px; width: 100%;
             max-width: 520px; position: relative; max-height: 85vh; display: flex; flex-direction: column;
         }
-        .modal-win { border-left: 4px solid var(--win-green); border-right: 1px solid rgba(0, 255, 0, 0.3); border-top: 1px solid rgba(0, 255, 0, 0.3); border-bottom: 1px solid rgba(0, 255, 0, 0.3); box-shadow: 0 0 25px rgba(0, 255, 0, 0.15); }
-        .modal-loss { border-left: 4px solid var(--loss-red); border-right: 1px solid rgba(255, 68, 68, 0.3); border-top: 1px solid rgba(255, 68, 68, 0.3); border-bottom: 1px solid rgba(255, 68, 68, 0.3); box-shadow: 0 0 25px rgba(255, 68, 68, 0.15); }
+        .card-win { border-left: 4px solid var(--win-green); border-right: 1px solid rgba(0, 255, 0, 0.3); border-top: 1px solid rgba(0, 255, 0, 0.3); border-bottom: 1px solid rgba(0, 255, 0, 0.3); box-shadow: 0 0 25px rgba(0, 255, 0, 0.15); }
+        .card-loss { border-left: 4px solid var(--loss-red); border-right: 1px solid rgba(255, 68, 68, 0.3); border-top: 1px solid rgba(255, 68, 68, 0.3); border-bottom: 1px solid rgba(255, 68, 68, 0.3); box-shadow: 0 0 25px rgba(255, 68, 68, 0.15); }
 
-        .close-bet-modal { position: absolute; top: 10px; right: 15px; color: #fff; font-size: 1.5rem; cursor: pointer; font-family: sans-serif; opacity: 0.7; }
-        .opt2-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; margin-top: 5px; flex-shrink: 0; }
-        .opt2-top-left { display: flex; align-items: center; }
-        .opt2-badge { padding: 3px 8px; border-radius: 3px; font-weight: bold; font-family: 'Righteous', cursive; letter-spacing: 1px; }
-
-        .modal-win .opt2-badge { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
-        .modal-loss .opt2-badge { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
-
-        .opt2-body-scroll { overflow-y: auto; padding-right: 5px; margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px; }
-        .leg-row { background: rgba(255, 255, 255, 0.03); border: 1px solid #222; border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-        .leg-win { border-left: 3px solid var(--win-green); background: rgba(0, 255, 0, 0.04); }
-        .leg-loss { border-left: 3px solid var(--loss-red); background: rgba(255, 68, 68, 0.05); }
-
-        .leg-info { display: flex; flex-direction: column; gap: 2px; font-size: 0.85rem; }
-        .leg-match { color: #eee; font-weight: bold; }
-        .leg-pick { font-size: 0.8rem; }
-        .leg-win .leg-pick { color: var(--win-green); }
-        .leg-loss .leg-pick { color: var(--loss-red); }
-
-        .leg-badge { font-size: 0.7rem; font-weight: bold; padding: 2px 6px; border-radius: 3px; font-family: 'Righteous', cursive; }
-        .leg-badge-won { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
-        .leg-badge-lost { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
-
-        .opt2-details { color: #ccc; font-size: 0.95rem; line-height: 1.6; flex-shrink: 0; }
-        .opt2-odds-box { margin-top: 10px; background: rgba(0, 0, 0, 0.6); padding: 15px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; flex-shrink: 0; }
-        .modal-win .opt2-odds { color: var(--win-green); }
-        .modal-loss .opt2-odds { color: var(--loss-red); }
-
-        footer { width: 100%; background: #000; height: 50px; padding: 0; text-align: center; border-top: 1px solid #222; color: #888; font-size: 0.8rem; margin-top: auto; display: flex; flex-direction: column; justify-content: center; }
-        .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
-        .footer-links a:hover { color: var(--neon-cyan); }
+        .pop-close { position: absolute; top: 10px; right: 15px; color: #fff; font-size: 1.5rem; cursor: pointer; font-family: sans-serif; opacity: 0.7; }
         
-        .modal-content { background: #0a0a0a; border: 2px solid var(--neon-cyan); padding: 30px; width: 90%; max-width: 600px; color: #fff; position: relative; box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); }
-        @media (max-width: 768px) { header { height: 50px; padding: 0 16px; } .logo-home { font-size: 1.5rem; gap: 8px; } .brand-emojis { font-size: 1rem; letter-spacing: 2px; } .progress-title { font-size: 1.1rem; } .progress-percentage { font-size: 1.3rem; } .stat-value { font-size: 1.25rem; } .mosaic-item { font-size: 0.9rem; min-height: 60px; } .opt2-card { padding: 15px; max-width: 100%; } .opt2-odds { font-size: 1.5rem; } }
+        .pop-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; margin-top: 5px; flex-shrink: 0; }
+        .pop-badge { padding: 3px 8px; border-radius: 3px; font-weight: bold; font-family: 'Righteous', cursive; }
+        .card-win .pop-badge { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
+        .card-loss .pop-badge { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
+
+        .pop-scroll { overflow-y: auto; padding-right: 5px; margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px; }
+
+        .slip-row { background: rgba(255, 255, 255, 0.03); border: 1px solid #222; border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        .slip-win { border-left: 3px solid var(--win-green); background: rgba(0, 255, 0, 0.04); }
+        .slip-loss { border-left: 3px solid var(--loss-red); background: rgba(255, 68, 68, 0.05); }
+
+        .slip-info { display: flex; flex-direction: column; gap: 2px; font-size: 0.85rem; }
+        .slip-match { color: #eee; font-weight: bold; }
+        .slip-pick { font-size: 0.8rem; }
+        .slip-win .slip-pick { color: var(--win-green); }
+        .slip-loss .slip-pick { color: var(--loss-red); }
+
+        .slip-badge { font-size: 0.7rem; font-weight: bold; padding: 2px 6px; border-radius: 3px; font-family: 'Righteous', cursive; }
+        .badge-won { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
+        .badge-lost { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
+
+        .pop-details { color: #ccc; font-size: 0.95rem; flex-shrink: 0; }
+        .pop-pnl-box { margin-top: 10px; background: rgba(0, 0, 0, 0.6); padding: 15px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; flex-shrink: 0; }
+        
+        .card-win .pop-pnl-val { color: var(--win-green); }
+        .card-loss .pop-pnl-val { color: var(--loss-red); }
+
+        footer { width: 100%; background: #000; height: 50px; text-align: center; border-top: 1px solid #222; color: #888; font-size: 0.8rem; margin-top: auto; display: flex; flex-direction: column; justify-content: center; }
+        .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
+        .pop-basic-content { background: #0a0a0a; border: 2px solid var(--neon-cyan); padding: 30px; width: 90%; max-width: 600px; color: #fff; position: relative; }
     </style>
 </head>
 <body>
@@ -152,14 +143,13 @@
             <span>#1M</span>
             <span class="brand-emojis">1️⃣🖕🏻🤑</span>
         </a>
-        <span class="header-tagline">10,000 &rarr; 1,000,000 JOURNEY</span>
     </header>
 
     <main>
         <section class="progress-card">
             <div class="progress-header">
                 <div class="progress-title">ROAD TO 1,000,000 🚀</div>
-                <div class="progress-percentage">1.20%</div>
+                <div class="progress-percentage">1.19%</div>
             </div>
             <div class="gauge-track">
                 <div class="gauge-fill"></div>
@@ -173,7 +163,7 @@
         <section class="dashboard">
             <div class="stat-box">
                 <div class="stat-label">Current Bankroll</div>
-                <div class="stat-value stat-profit">12,029.50</div>
+                <div class="stat-value stat-profit">11,929.50</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Days In Journey</div>
@@ -184,15 +174,14 @@
         <section class="mosaic-container">
             <div class="mosaic-title">
                 <span>BET HISTORY (NEW TO OLD)</span>
-                <span style="font-size:0.8rem; color:#888;">CLICK TILE FOR BETSLIP</span>
             </div>
             <div class="mosaic-grid">
-                <div class="mosaic-item mosaic-loss" onclick="afficherTicket(6)">-150</div>
-                <div class="mosaic-item mosaic-win" onclick="afficherTicket(5)">+555</div>
-                <div class="mosaic-item mosaic-win" onclick="afficherTicket(4)">+530</div>
-                <div class="mosaic-item mosaic-loss" onclick="afficherTicket(3)">-150</div>
-                <div class="mosaic-item mosaic-win" onclick="afficherTicket(2)">+574.50</div>
-                <div class="mosaic-item mosaic-win" onclick="afficherTicket(1)">+570</div>
+                <div class="mosaic-item bg-loss" onclick="openSlip(6)">-150</div>
+                <div class="mosaic-item bg-win" onclick="openSlip(5)">+555</div>
+                <div class="mosaic-item bg-win" onclick="openSlip(4)">+530</div>
+                <div class="mosaic-item bg-loss" onclick="openSlip(3)">-150</div>
+                <div class="mosaic-item bg-win" onclick="openSlip(2)">+574.50</div>
+                <div class="mosaic-item bg-win" onclick="openSlip(1)">+570</div>
             </div>
         </section>
     </main>
@@ -207,109 +196,114 @@
     </footer>
 
     <!-- LEGAL MODALS -->
-    <div class="modal-overlay" id="modal-legal" onclick="if(event.target.id==='modal-legal')this.style.display='none'">
-        <div class="modal-content"><span class="close-modal" onclick="document.getElementById('modal-legal').style.display='none'">X</span><h2 class="modal-title">Legal Notice</h2><p><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p></div>
+    <div class="pop-overlay" id="modal-legal" onclick="if(event.target.id === 'modal-legal') this.style.display='none'">
+        <div class="pop-basic-content"><span class="pop-close" onclick="document.getElementById('modal-legal').style.display='none'">X</span><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Legal Notice</h2><p style="margin-top:10px;"><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p></div>
     </div>
-    <div class="modal-overlay" id="modal-tos" onclick="if(event.target.id==='modal-tos')this.style.display='none'">
-        <div class="modal-content"><span class="close-modal" onclick="document.getElementById('modal-tos').style.display='none'">X</span><h2 class="modal-title">Terms of Service</h2><p>En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous documentons un défi personnel de capitalisation, nous ne sommes pas un bookmaker.</p></div>
+    <div class="pop-overlay" id="modal-tos" onclick="if(event.target.id === 'modal-tos') this.style.display='none'">
+        <div class="pop-basic-content"><span class="pop-close" onclick="document.getElementById('modal-tos').style.display='none'">X</span><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Terms of Service</h2><p style="margin-top:10px;">En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous documentons un défi personnel de capitalisation, nous ne sommes pas un bookmaker.</p></div>
     </div>
-    <div class="modal-overlay" id="modal-privacy" onclick="if(event.target.id==='modal-privacy')this.style.display='none'">
-        <div class="modal-content"><span class="close-modal" onclick="document.getElementById('modal-privacy').style.display='none'">X</span><h2 class="modal-title">Privacy Policy</h2><p>Votre email et vos informations personnelles ne seront jamais partagés ni commercialisés auprès de tiers.</p></div>
+    <div class="pop-overlay" id="modal-privacy" onclick="if(event.target.id === 'modal-privacy') this.style.display='none'">
+        <div class="pop-basic-content"><span class="pop-close" onclick="document.getElementById('modal-privacy').style.display='none'">X</span><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Privacy Policy</h2><p style="margin-top:10px;">Votre email et vos informations personnelles ne seront jamais partagés ni commercialisés auprès de tiers.</p></div>
     </div>
 
-    <!-- BET DETAIL MODAL EXACTEMENT COMME LE FICHIER FOURNI -->
-    <div class="modal-overlay" id="bet-modal" onclick="fermerModale(event)">
-        <div class="opt2-card" id="modal-card">
-            <div class="close-bet-modal" onclick="document.getElementById('bet-modal').style.display='none'">✕</div>
-            <div class="opt2-top">
-                <div class="opt2-top-left">
-                    <span style="color:#aaa; font-size:0.85rem;" id="modal-date-tourney">Date • Tournoi</span>
-                </div>
-                <span class="opt2-badge" id="modal-badge">WON</span>
+    <!-- BET DETAIL MODAL -->
+    <div class="pop-overlay" id="main-bet-modal" onclick="if(event.target.id === 'main-bet-modal') this.style.display='none'">
+        <div class="pop-card" id="ui-card">
+            <div class="pop-close" onclick="document.getElementById('main-bet-modal').style.display='none'">✕</div>
+            
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;" id="ui-tourney">Date • Tournoi</span>
+                <span class="pop-badge" id="ui-badge">WON</span>
             </div>
 
-            <div class="opt2-body-scroll" id="modal-selections-container"></div>
+            <div class="pop-scroll" id="ui-legs-container"></div>
 
-            <div class="opt2-details">
-                Stake: <span id="modal-stake" style="color:#fff; font-weight:bold;">0</span> <span id="modal-pct" style="color:var(--neon-gold); font-size:0.85rem;"></span>
+            <div class="pop-details">
+                Stake: <span id="ui-stake" style="color:#fff; font-weight:bold;">0</span> <span id="ui-pct" style="color:var(--neon-gold); font-size:0.85rem;"></span><br>
+                Total Odds: <span id="ui-odds" style="color:#fff; font-weight:bold;">@ 0.00</span>
             </div>
-            <div class="opt2-odds-box">
+            
+            <div class="pop-pnl-box">
                 <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
-                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="opt2-odds" id="modal-pnl">+0.00</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val" id="ui-pnl">+0.00</span>
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT PROTEGE PAR DES COMMENTAIRES // POUR EVITER LES BUG SYSTEME -->
     <script>
-        const listeParis = [ //
-            { //
-                id: 6, //
-                date: '31.08.2026', //
-                tourney: 'Accumulator (10 Legs)', //
-                odds: '27.17', //
-                stake: '150', //
-                pct: '(1.5% Bankroll)', //
-                status: 'LOSS', //
-                pnl: '-150.00', //
-                legs: [ //
-                    { match: 'R. Safiullin vs C. Alcaraz', pick: 'Vainqueur: C. Alcaraz', won: true, score: '4-6, 4-6, 4-6' }, //
-                    { match: 'M. Chwalinska vs T. Townsend', pick: 'Vainqueur: T. Townsend', won: true, score: '2-6, 3-6' }, //
-                    { match: 'D. Snigur vs D. Shnaider', pick: 'Vainqueur: D. Shnaider', won: true, score: '0-6, 4-6' }, //
-                    { match: 'T. Zidansek vs M. Timofeeva', pick: 'Vainqueur: M. Timofeeva', won: true, score: '3-6, 5-7' }, //
-                    { match: 'L. Darderi vs H. Wendelken', pick: 'Vainqueur: L. Darderi', won: true, score: '6-3, 6-7, 6-2, 7-5' }, //
-                    { match: 'J. Shang vs M. Trungelliti', pick: 'Vainqueur: J. Shang', won: false, score: '6-0, 6-7, 6-1, 3-6, 4-6' }, //
-                    { match: 'Y. Hanfmann vs A. Tabilo', pick: 'Vainqueur: A. Tabilo', won: true, score: '3-6, 2-6, 7-6, 3-6' }, //
-                    { match: 'Q. Halys vs F. Diaz Acosta', pick: 'Vainqueur: Q. Halys', won: true, score: '6-4, 7-5, 6-7, 6-1' }, //
-                    { match: 'R. A. Burruchaga vs K. Khachanov', pick: 'Vainqueur: K. Khachanov', won: true, score: '3-6, 0-6, 1-6' }, //
-                    { match: 'E. Cocciaretto vs K. Siniakova', pick: 'Vainqueur: K. Siniakova', won: true, score: '3-6, 2-6' } //
-                ] //
-            }, //
-            { //
-                id: 5, //
-                date: '31.08.2026', //
-                tourney: 'Accumulator (9 Legs)', //
-                odds: '2.11', //
-                stake: '500', //
-                pct: '(5.0% Bankroll)', //
-                status: 'WIN', //
-                pnl: '+555.00', //
-                legs: [ //
-                    { match: 'M. Chwalinska vs T. Townsend', pick: 'T. Townsend gagne un set: Oui', won: true, score: '' }, //
-                    { match: 'D. Snigur vs D. Shnaider', pick: 'D. Shnaider gagne un set: Oui', won: true, score: '' }, //
-                    { match: 'T. Zidansek vs M. Timofeeva', pick: 'M. Timofeeva gagne un set: Oui', won: true, score: '' }, //
-                    { match: 'L. Darderi vs H. Wendelken', pick: 'L. Darderi gagne un set: Oui', won: true, score: '' }, //
-                    { match: 'R. Safiullin vs C. Alcaraz', pick: 'C. Alcaraz gagne un set: Oui', won: true, score: '' }, //
-                    { match: 'J. Shang vs M. Trungelliti', pick: 'J. Shang gagne un set: Oui', won: true, score: '' }, //
-                    { match: 'Y. Hanfmann vs A. Tabilo', pick: 'A. Tabilo gagne un set: Oui', won: true, score: '' }, //
-                    { match: 'Q. Halys vs F. Diaz Acosta', pick: 'Q. Halys gagne un set: Oui', won: true, score: '' }, //
-                    { match: 'R. A. Burruchaga vs K. Khachanov', pick: 'K. Khachanov gagne un set: Oui', won: true, score: '' } //
-                ] //
-            }, //
-            { //
-                id: 4, //
-                date: '31.08.2026', //
-                tourney: 'Accumulator (4 Legs)', //
-                odds: '2.06', //
-                stake: '500', //
-                pct: '(5.0% Bankroll)', //
-                status: 'WIN', //
-                pnl: '+530.00', //
-                legs: [ //
-                    { match: 'R. Safiullin vs C. Alcaraz', pick: 'Vainqueur: C. Alcaraz', won: true, score: '' }, //
-                    { match: 'R. Burruchaga vs K. Khachanov', pick: 'Vainqueur: K. Khachanov', won: true, score: '' }, //
-                    { match: 'L. Darderi vs H. Wendelken', pick: 'Vainqueur: L. Darderi', won: true, score: '' }, //
-                    { match: 'J. Shang vs M. Trungelliti', pick: 'Joueur 1 gagne un set: Oui', won: true, score: '' } //
-                ] //
-            }, //
-            { //
-                id: 3, //
-                date: '30.08.2026', //
-                tourney: 'Accumulator (5 Legs)', //
-                odds: '5.01', //
-                stake: '150', //
-                pct: '(1.5% Bankroll)', //
-                status: 'LOSS', //
-                pnl: '-150.00', //
-                legs: [ //
-                    { match: 'I. Amariei vs A. Lahey', pick: 'Vainqueur: I. Amariei', won: f
+        var myBets = [
+            { id: 6, date: '31.08.2026', tournament: 'Accumulator (10 Legs)', odds: 27.17, stake: '150', pct: '(1.5% Bankroll)', status: 'LOSS', badge: 'LOSS', pnl: '-150.00',
+              legs: [
+                  { match: 'R. Safiullin vs C. Alcaraz', pick: 'Vainqueur : C. Alcaraz', won: true },
+                  { match: 'M. Chwalinska vs T. Townsend', pick: 'Vainqueur : T. Townsend', won: true },
+                  { match: 'D. Snigur vs D. Shnaider', pick: 'Vainqueur : D. Shnaider', won: true },
+                  { match: 'T. Zidansek vs M. Timofeeva', pick: 'Vainqueur : M. Timofeeva', won: true },
+                  { match: 'L. Darderi vs H. Wendelken', pick: 'Vainqueur : L. Darderi', won: true },
+                  { match: 'J. Shang vs M. Trungelliti', pick: 'Vainqueur : J. Shang (2-3)', won: false },
+                  { match: 'Y. Hanfmann vs A. Tabilo', pick: 'Vainqueur : A. Tabilo', won: true },
+                  { match: 'Q. Halys vs F. Diaz Acosta', pick: 'Vainqueur : Q. Halys', won: true },
+                  { match: 'R. A. Burruchaga vs K. Khachanov', pick: 'Vainqueur : K. Khachanov', won: true },
+                  { match: 'E. Cocciaretto vs K. Siniakova', pick: 'Vainqueur : K. Siniakova', won: true }
+              ] },
+            { id: 5, date: '31.08.2026', tournament: 'Accumulator (9 Legs)', odds: 2.11, stake: '500', pct: '(5.0% Bankroll)', status: 'WIN', badge: 'WON', pnl: '+555.00',
+              legs: [
+                  { match: 'M. Chwalinska vs T. Townsend', pick: 'Townsend gagne un set: Oui', won: true },
+                  { match: 'D. Snigur vs D. Shnaider', pick: 'Shnaider gagne un set: Oui', won: true },
+                  { match: 'T. Zidansek vs M. Timofeeva', pick: 'Timofeeva gagne un set: Oui', won: true },
+                  { match: 'L. Darderi vs H. Wendelken', pick: 'Darderi gagne un set: Oui', won: true },
+                  { match: 'R. Safiullin vs C. Alcaraz', pick: 'Alcaraz gagne un set: Oui', won: true },
+                  { match: 'J. Shang vs M. Trungelliti', pick: 'Shang gagne un set: Oui', won: true },
+                  { match: 'Y. Hanfmann vs A. Tabilo', pick: 'Tabilo gagne un set: Oui', won: true },
+                  { match: 'Q. Halys vs F. Diaz Acosta', pick: 'Halys gagne un set: Oui', won: true },
+                  { match: 'R. Burruchaga vs K. Khachanov', pick: 'Khachanov gagne un set: Oui', won: true }
+              ] },
+            { id: 4, date: '31.08.2026', tournament: 'Accumulator (4 Legs)', odds: 2.06, stake: '500', pct: '(5.0% Bankroll)', status: 'WIN', badge: 'WON', pnl: '+530.00',
+              legs: [
+                  { match: 'R. Safiullin vs C. Alcaraz', pick: 'Vainqueur du match : Alcaraz', won: true },
+                  { match: 'R. Burruchaga vs K. Khachanov', pick: 'Vainqueur du match : Khachanov', won: true },
+                  { match: 'L. Darderi vs H. Wendelken', pick: 'Vainqueur du match : Darderi', won: true },
+                  { match: 'J. Shang vs M. Trungelliti', pick: 'Shang gagne un set : Oui', won: true }
+              ] },
+            { id: 3, date: '30.08.2026', tournament: 'Accumulator (5 Legs)', odds: 5.01, stake: '150', pct: '(1.5% Bankroll)', status: 'LOSS', badge: 'LOSS', pnl: '-150.00',
+              legs: [
+                  { match: 'I. Amariei vs A. Lahey', pick: 'Vainqueur : Amariei (1:2)', won: false },
+                  { match: 'J. Vrba vs B. Nakashima', pick: 'Vainqueur : Nakashima', won: true },
+                  { match: 'J. Munar vs T. Atmane', pick: 'Vainqueur : Atmane (3:2)', won: false },
+                  { match: 'E. Arango vs X. Wang', pick: 'Vainqueur : Wang', won: true },
+                  { match: 'E. Navarro vs L. Boisson', pick: 'Vainqueur : Navarro', won: true }
+              ] },
+            { id: 2, date: '30.08.2026', tournament: 'Accumulator (5 Legs)', odds: 2.149, stake: '500', pct: '(5.0% Bankroll)', status: 'WIN', badge: 'WON', pnl: '+574.50',
+              legs: [
+                  { match: 'J. Vrba vs B. Nakashima', pick: 'Sets Handicap: Nakashima (+1.5)', won: true },
+                  { match: 'I. Amariei vs A. Lahey', pick: 'Sets Handicap: Amariei (+1.5)', won: true },
+                  { match: 'E. Arango vs X. Wang', pick: 'Sets Handicap: Wang (+1.5)', won: true },
+                  { match: 'J. Munar vs T. Atmane', pick: 'Sets Handicap: Atmane (+1.5)', won: true },
+                  { match: 'E. Navarro vs L. Boisson', pick: 'Sets Handicap: Navarro (+1.5)', won: true }
+              ] },
+            { id: 1, date: '30.08.2026', tournament: 'Accumulator (3 Legs)', odds: 2.14, stake: '500', pct: '(5.0% Bankroll)', status: 'WIN', badge: 'WON', pnl: '+570.00',
+              legs: [
+                  { match: 'E. Arango vs X. Wang', pick: 'Wang ML', won: true },
+                  { match: 'E. Navarro vs L. Boisson', pick: 'Navarro ML', won: true },
+                  { match: 'J. Munar vs T. Atmane', pick: 'Atmane Sets Handicap (+1.5)', won: true }
+              ] }
+        ];
+
+        function openSlip(id) {
+            var bet = null;
+            for (var i = 0; i < myBets.length; i++) {
+                if (myBets[i].id === id) { bet = myBets[i]; break; }
+            }
+            if (!bet) return;
+
+            document.getElementById('ui-tourney').innerText = bet.date + ' • ' + bet.tournament;
+            document.getElementById('ui-stake').innerText = bet.stake;
+            document.getElementById('ui-pct').innerText = bet.pct;
+            document.getElementById('ui-odds').innerText = '@ ' + bet.odds;
+            document.getElementById('ui-badge').innerText = bet.badge;
+            document.getElementById('ui-pnl').innerText = (bet.status === 'WIN' ? '+' : '') + bet.pnl;
+
+            var card = document.getElementById('ui-card');
+            card.classList.remove('card-win', 'card-loss');
+            card.classList.add(bet.status === 'WIN' ? 'card-win' : 'card-loss');
+
+            var container = docu
