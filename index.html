@@ -78,9 +78,7 @@
             display: none;
         }
 
-        @media(min-width: 650px) {
-            .header-tagline { display: block; }
-        }
+        @media(min-width: 650px) { .header-tagline { display: block; } }
 
         main {
             flex: 1;
@@ -152,11 +150,7 @@
             color: #888;
             text-transform: uppercase;
         }
-
-        .gauge-milestones span.active {
-            color: var(--neon-cyan);
-            font-weight: bold;
-        }
+        .gauge-milestones span.active { color: var(--neon-cyan); font-weight: bold; }
 
         .dashboard {
             width: 100%;
@@ -174,238 +168,75 @@
             box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.08);
         }
 
-        .stat-label {
-            font-size: 0.8rem;
-            color: #aaa;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-            letter-spacing: 0.8px;
-        }
+        .stat-label { font-size: 0.8rem; color: #aaa; text-transform: uppercase; margin-bottom: 6px; letter-spacing: 0.8px; }
+        .stat-value { font-family: 'Righteous', cursive; font-size: 1.5rem; color: #fff; }
+        .stat-profit { color: var(--win-green); text-shadow: 0 0 8px rgba(0, 255, 0, 0.4); }
 
-        .stat-value {
-            font-family: 'Righteous', cursive;
-            font-size: 1.5rem;
-            color: #fff;
-        }
-
-        .stat-profit {
-            color: var(--win-green);
-            text-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
-        }
-
-        .mosaic-container {
-            width: 100%;
-        }
-
+        .mosaic-container { width: 100%; }
         .mosaic-title {
-            font-size: 1.1rem;
-            color: var(--neon-cyan);
-            margin-bottom: 14px;
-            border-bottom: 1px solid #222;
-            padding-bottom: 6px;
-            text-align: left;
-            letter-spacing: 1px;
-            display: flex;
-            justify-content: space-between;
+            font-size: 1.1rem; color: var(--neon-cyan); margin-bottom: 14px;
+            border-bottom: 1px solid #222; padding-bottom: 6px;
+            display: flex; justify-content: space-between;
         }
+        .mosaic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; }
 
-        .mosaic-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            width: 100%;
+        @media(min-width: 600px) { .mosaic-grid { grid-template-columns: repeat(6, 1fr); } }
+
+        .mosaic-item {
+            aspect-ratio: 1; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; border-radius: 6px; font-family: 'Righteous', cursive;
+            font-size: 1.05rem; cursor: pointer; transition: transform 0.1s; user-select: none;
         }
+        .mosaic-item:active { transform: scale(0.95); }
 
-        @media(min-width: 600px) {
-            .mosaic-grid { grid-template-columns: repeat(6, 1fr); }
-        }
+        .mosaic-win { background: rgba(0, 255, 0, 0.15); border: 2px solid var(--win-green); color: var(--win-green); box-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
+        .mosaic-loss { background: rgba(255, 68, 68, 0.15); border: 2px solid var(--loss-red); color: var(--loss-red); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
 
-        .mosaic-tile {
-            aspect-ratio: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 6px;
-            font-family: 'Righteous', cursive;
-            font-size: 1.05rem;
-            cursor: pointer;
-            user-select: none;
-            min-height: 70px;
-            width: 100%;
-            border: 2px solid transparent;
-        }
-
-        .mosaic-tile:active { transform: scale(0.95); }
-
-        .tile-win {
-            background: rgba(0, 255, 0, 0.15);
-            border-color: var(--win-green);
-            color: var(--win-green);
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
-        }
-        .tile-loss {
-            background: rgba(255, 68, 68, 0.15);
-            border-color: var(--loss-red);
-            color: var(--loss-red);
-            box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
-        }
-
-        /* MODALE PLEIN ÉCRAN */
-        .modal-wrap {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(5px);
-            z-index: 99999;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
+        /* MODAL SYSTEM */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(5px); z-index: 99999;
+            justify-content: center; align-items: center; padding: 15px;
         }
 
         .opt2-card {
-            background: #080012;
-            border-radius: 10px;
-            padding: 20px;
-            width: 100%;
-            max-width: 500px;
-            position: relative;
-            max-height: 85vh;
-            overflow-y: auto;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+            background: #080012; border-radius: 10px; padding: 22px; width: 100%; max-width: 500px;
+            position: relative; max-height: 85vh; overflow-y: auto; box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
         }
 
-        .modal-card-win {
-            border-left: 5px solid var(--win-green);
-            border-right: 1px solid rgba(0, 255, 0, 0.4);
-            border-top: 1px solid rgba(0, 255, 0, 0.4);
-            border-bottom: 1px solid rgba(0, 255, 0, 0.4);
-        }
-        .modal-card-win .badge-state { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
-        .modal-card-win .pnl-state { color: var(--win-green); }
+        .modal-win { border-left: 5px solid var(--win-green); border-right: 1px solid rgba(0, 255, 0, 0.4); border-top: 1px solid rgba(0, 255, 0, 0.4); border-bottom: 1px solid rgba(0, 255, 0, 0.4); }
+        .modal-win .opt2-badge { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
+        .modal-win .opt2-pnl-val { color: var(--win-green); }
 
-        .modal-card-loss {
-            border-left: 5px solid var(--loss-red);
-            border-right: 1px solid rgba(255, 68, 68, 0.4);
-            border-top: 1px solid rgba(255, 68, 68, 0.4);
-            border-bottom: 1px solid rgba(255, 68, 68, 0.4);
-        }
-        .modal-card-loss .badge-state { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
-        .modal-card-loss .pnl-state { color: var(--loss-red); }
+        .modal-loss { border-left: 5px solid var(--loss-red); border-right: 1px solid rgba(255, 68, 68, 0.4); border-top: 1px solid rgba(255, 68, 68, 0.4); border-bottom: 1px solid rgba(255, 68, 68, 0.4); }
+        .modal-loss .opt2-badge { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
+        .modal-loss .opt2-pnl-val { color: var(--loss-red); }
 
-        .btn-close {
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            color: #fff;
-            font-size: 1.6rem;
-            cursor: pointer;
-            line-height: 1;
-            padding: 6px 10px;
-        }
+        .btn-close { position: absolute; top: 12px; right: 16px; color: #fff; font-size: 1.6rem; cursor: pointer; opacity: 0.8; }
+        .btn-close:hover { opacity: 1; color: var(--neon-pink); }
 
-        .opt2-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-right: 30px;
-        }
+        .opt2-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-right: 25px; }
+        .opt2-badge { padding: 3px 10px; border-radius: 4px; font-weight: bold; font-family: 'Righteous', cursive; letter-spacing: 1px; font-size: 0.9rem; }
 
-        .badge-state {
-            padding: 3px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-family: 'Righteous', cursive;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-        }
+        .opt2-match-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
 
-        .opt2-match-list {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-            margin-bottom: 15px;
-        }
-
-        .pick-row {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 8px 10px;
-            border-radius: 5px;
-            font-size: 0.82rem;
-            line-height: 1.4;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 3px solid var(--win-green);
-        }
-        .pick-row.lost-pick {
-            border-left-color: var(--loss-red);
-            background: rgba(255, 68, 68, 0.08);
-        }
+        .pick-row { background: rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 6px; font-size: 0.85rem; line-height: 1.4; display: flex; justify-content: space-between; align-items: center; border-left: 3px solid var(--win-green); }
+        .pick-row.lost-pick { border-left-color: var(--loss-red); background: rgba(255, 68, 68, 0.08); }
 
         .pick-info { flex: 1; }
-        .pick-status-icon {
-            font-weight: bold;
-            margin-left: 8px;
-            font-size: 0.95rem;
-        }
+        .pick-status-icon { font-weight: bold; margin-left: 8px; font-size: 1rem; }
         .won-pick .pick-status-icon { color: var(--win-green); }
         .lost-pick .pick-status-icon { color: var(--loss-red); }
 
-        .opt2-meta {
-            color: #aaa;
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 10px;
-            line-height: 1.6;
-        }
+        .opt2-meta { color: #aaa; font-size: 0.85rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 12px; line-height: 1.6; }
+        .opt2-pnl-box { margin-top: 16px; background: rgba(0, 0, 0, 0.7); padding: 12px 16px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(0, 255, 255, 0.2); }
 
-        .opt2-pnl-box {
-            margin-top: 14px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 12px 16px;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-        }
-
-        footer {
-            width: 100%;
-            background: #000;
-            height: 54px;
-            padding: 0;
-            text-align: center;
-            border-top: 1px solid #222;
-            color: #888;
-            font-size: 0.8rem;
-            margin-top: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .footer-links a {
-            color: #aaa;
-            text-decoration: none;
-            margin: 0 10px;
-            cursor: pointer;
-        }
+        footer { width: 100%; background: #000; height: 54px; display: flex; flex-direction: column; justify-content: center; text-align: center; border-top: 1px solid #222; color: #888; font-size: 0.8rem; margin-top: auto; }
+        .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
         .footer-links a:hover { color: var(--neon-cyan); }
-
-        .modal-content {
-            background: #0a0a0a;
-            border: 2px solid var(--neon-cyan);
-            padding: 30px;
-            width: 90%;
-            max-width: 600px;
-            color: #fff;
-            position: relative;
-        }
+        
+        .modal-content { background: #0a0a0a; border: 2px solid var(--neon-cyan); padding: 30px; width: 90%; max-width: 600px; color: #fff; position: relative; }
+        @media (max-width: 768px) { header { height: 50px; padding: 0 16px; } .logo-home { font-size: 1.5rem; gap: 8px; } .brand-emojis { font-size: 1rem; letter-spacing: 2px; } .progress-title { font-size: 1.1rem; } .progress-percentage { font-size: 1.3rem; } .stat-value { font-size: 1.25rem; } .mosaic-item { font-size: 0.85rem; min-height: 55px; } }
     </style>
 </head>
 <body>
@@ -450,54 +281,115 @@
                 <span style="font-size:0.8rem; color:#888;">CLICK TILE FOR BETSLIP</span>
             </div>
             <div class="mosaic-grid">
-                <button type="button" class="mosaic-tile tile-loss" onclick="document.getElementById('slip-6').style.display='flex'">-150</button>
-                <button type="button" class="mosaic-tile tile-win" onclick="document.getElementById('slip-5').style.display='flex'">+555</button>
-                <button type="button" class="mosaic-tile tile-win" onclick="document.getElementById('slip-4').style.display='flex'">+530</button>
-                <button type="button" class="mosaic-tile tile-loss" onclick="document.getElementById('slip-3').style.display='flex'">-150</button>
-                <button type="button" class="mosaic-tile tile-win" onclick="document.getElementById('slip-2').style.display='flex'">+574.50</button>
-                <button type="button" class="mosaic-tile tile-win" onclick="document.getElementById('slip-1').style.display='flex'">+570</button>
+                <!-- Les clics appellent directement la fonction JS -->
+                <div class="mosaic-item mosaic-loss" onclick="openBet(6)">-150</div>
+                <div class="mosaic-item mosaic-win" onclick="openBet(5)">+555</div>
+                <div class="mosaic-item mosaic-win" onclick="openBet(4)">+530</div>
+                <div class="mosaic-item mosaic-loss" onclick="openBet(3)">-150</div>
+                <div class="mosaic-item mosaic-win" onclick="openBet(2)">+574.50</div>
+                <div class="mosaic-item mosaic-win" onclick="openBet(1)">+570</div>
             </div>
         </section>
     </main>
 
-    <!-- SLIP 6 (10 LEGS) -->
-    <div class="modal-wrap" id="slip-6" onclick="if(event.target===this) this.style.display='none'">
-        <div class="opt2-card modal-card-loss">
-            <div class="btn-close" onclick="document.getElementById('slip-6').style.display='none'">✕</div>
+    <!-- UNIQUE BET MODAL (Générée par le JS) -->
+    <div class="modal-overlay" id="bet-modal" onclick="if(event.target.id === 'bet-modal') this.style.display='none'">
+        <div class="opt2-card" id="modal-card">
+            <div class="btn-close" onclick="document.getElementById('bet-modal').style.display='none'">✕</div>
             <div class="opt2-top">
-                <span style="color:#aaa; font-size:0.85rem;">31.08.2026 • Accumulator (10 Legs)</span>
-                <span class="badge-state">LOST</span>
+                <span style="color:#aaa; font-size:0.85rem;" id="modal-date"></span>
+                <span class="opt2-badge" id="modal-badge"></span>
             </div>
-            <div class="opt2-match-list">
-                <div class="pick-row won-pick"><div class="pick-info"><strong>1. C. Alcaraz vs R. Safiullin</strong><br><span style="color:#aaa; font-size:0.78rem;">Alcaraz ML (1.20)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>2. T. Townsend vs M. Chwalinska</strong><br><span style="color:#aaa; font-size:0.78rem;">Townsend ML (1.46)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>3. D. Shnaider vs D. Snigur</strong><br><span style="color:#aaa; font-size:0.78rem;">Shnaider ML (1.37)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>4. M. Timofeeva vs T. Zidansek</strong><br><span style="color:#aaa; font-size:0.78rem;">Timofeeva ML (1.45)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>5. L. Darderi vs H. Wendelken</strong><br><span style="color:#aaa; font-size:0.78rem;">Darderi ML (1.30)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row lost-pick"><div class="pick-info"><strong>6. J. Shang vs M. Trungelliti</strong><br><span style="color:#aaa; font-size:0.78rem;">Shang ML (1.47) — Lost 2-3</span></div><span class="pick-status-icon">❌</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>7. A. Tabilo vs Y. Hanfmann</strong><br><span style="color:#aaa; font-size:0.78rem;">Tabilo ML (1.68)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>8. Q. Halys vs F. Diaz Acosta</strong><br><span style="color:#aaa; font-size:0.78rem;">Halys ML (1.28)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>9. K. Khachanov vs R. Burruchaga</strong><br><span style="color:#aaa; font-size:0.78rem;">Khachanov ML (1.25)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>10. K. Siniakova vs E. Cocciaretto</strong><br><span style="color:#aaa; font-size:0.78rem;">Siniakova ML (1.52)</span></div><span class="pick-status-icon">✓</span></div>
+            
+            <div class="opt2-match-list" id="modal-picks-container"></div>
+
+            <div class="opt2-meta">
+                Total Odds: <span style="color:#fff; font-weight:bold;" id="modal-odds"></span><br>
+                Stake: <span id="modal-stake" style="color:#fff;"></span> <span id="modal-pct" style="color:var(--neon-gold); font-size:0.8rem;"></span>
             </div>
-            <div class="opt2-meta">Total Odds: <span style="color:#fff; font-weight:bold;">@ 27.17</span><br>Stake: <span style="color:#fff;">150</span> <span style="color:var(--neon-gold); font-size:0.8rem;">(1.5% Bankroll)</span></div>
-            <div class="opt2-pnl-box"><span style="font-family:'Righteous',cursive; color:var(--neon-pink); font-size:1.1rem;">PROFIT / LOSS</span><span style="font-size:1.6rem; font-family:'Righteous',cursive;" class="pnl-state">-150.00</span></div>
+
+            <div class="opt2-pnl-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink); font-size:1.1rem;">PROFIT / LOSS</span>
+                <span style="font-size:1.6rem; font-family:'Righteous',cursive;" class="opt2-pnl-val" id="modal-pnl"></span>
+            </div>
         </div>
     </div>
 
-    <!-- SLIP 5 (9 LEGS) -->
-    <div class="modal-wrap" id="slip-5" onclick="if(event.target===this) this.style.display='none'">
-        <div class="opt2-card modal-card-win">
-            <div class="btn-close" onclick="document.getElementById('slip-5').style.display='none'">✕</div>
-            <div class="opt2-top">
-                <span style="color:#aaa; font-size:0.85rem;">31.08.2026 • Accumulator (9 Legs)</span>
-                <span class="badge-state">WON</span>
-            </div>
-            <div class="opt2-match-list">
-                <div class="pick-row won-pick"><div class="pick-info"><strong>1. M. Chwalinska vs T. Townsend</strong><br><span style="color:#aaa; font-size:0.78rem;">Townsend to win a set (1.19)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>2. D. Snigur vs D. Shnaider</strong><br><span style="color:#aaa; font-size:0.78rem;">Shnaider to win a set (1.13)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>3. T. Zidansek vs M. Timofeeva</strong><br><span style="color:#aaa; font-size:0.78rem;">Timofeeva to win a set (1.18)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>4. L. Darderi vs H. Wendelken</strong><br><span style="color:#aaa; font-size:0.78rem;">Darderi to win a set (1.04)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>5. R. Safiullin vs C. Alcaraz</strong><br><span style="color:#aaa; font-size:0.78rem;">Alcaraz to win a set (1.02)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="pick-info"><strong>6. J. Shang vs M. Trungelliti</strong><br><span style="color:#aaa; font-size:0.78rem;">Shang to win a set (1.07)</span></div><span class="pick-status-icon">✓</span></div>
-                <div class="pick-row won-pick"><div class="p
+    <!-- MODALES LÉGALES -->
+    <div class="modal-overlay" id="modal-legal" onclick="if(event.target.id === 'modal-legal') this.style.display='none'">
+        <div class="modal-content">
+            <div class="btn-close" onclick="document.getElementById('modal-legal').style.display='none'">✕</div>
+            <h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive; margin-bottom:15px;">Legal Notice</h2>
+            <p><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modal-tos" onclick="if(event.target.id === 'modal-tos') this.style.display='none'">
+        <div class="modal-content">
+            <div class="btn-close" onclick="document.getElementById('modal-tos').style.display='none'">✕</div>
+            <h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive; margin-bottom:15px;">Terms of Service</h2>
+            <p>En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous documentons un défi personnel de capitalisation, nous ne sommes pas un bookmaker.</p>
+        </div>
+    </div>
+    <div class="modal-overlay" id="modal-privacy" onclick="if(event.target.id === 'modal-privacy') this.style.display='none'">
+        <div class="modal-content">
+            <div class="btn-close" onclick="document.getElementById('modal-privacy').style.display='none'">✕</div>
+            <h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive; margin-bottom:15px;">Privacy Policy</h2>
+            <p>Votre email et vos informations personnelles ne seront jamais partagés ni commercialisés auprès de tiers.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a onclick="document.getElementById('modal-tos').style.display='flex'">TOS</a> |
+            <a onclick="document.getElementById('modal-privacy').style.display='flex'">Privacy</a> |
+            <a onclick="document.getElementById('modal-legal').style.display='flex'">Legal Notice</a>
+        </div>
+        <p style="margin-top:4px;">&copy; 2026 OneFuckingMillion.com</p>
+    </footer>
+
+    <script>
+        /* Base de données exacte des paris */
+        var betData = {
+            6: {
+                date: '31.08.2026', odds: '@ 27.17', stake: '150', pct: '(1.5% Bankroll)', status: 'LOSS', pnl: '150.00',
+                picks: [
+                    { match: 'Roman Safiullin - Carlos Alcaraz', sel: 'Vainqueur : C. Alcaraz', score: '4-6, 4-6, 4-6', won: true },
+                    { match: 'Maja Chwalinska - Taylor Townsend', sel: 'Vainqueur : T. Townsend', score: '2-6, 3-6', won: true },
+                    { match: 'Daria Snigur - Diana Shnaider', sel: 'Vainqueur : D. Shnaider', score: '0-6, 4-6', won: true },
+                    { match: 'Tamara Zidansek - Maria Timofeeva', sel: 'Vainqueur : M. Timofeeva', score: '3-6, 5-7', won: true },
+                    { match: 'Luciano Darderi - Harry Wendelken', sel: 'Vainqueur : L. Darderi', score: '6-3, 6-7, 6-2, 7-5', won: true },
+                    { match: 'Juncheng Shang - Marco Trungelliti', sel: 'Vainqueur : J. Shang', score: '6-0, 6-7, 6-1, 3-6, 4-6', won: false },
+                    { match: 'Yannick Hanfmann - Alejandro Tabilo', sel: 'Vainqueur : A. Tabilo', score: '3-6, 2-6, 7-6, 3-6', won: true },
+                    { match: 'Quentin Halys - Facundo Diaz Acosta', sel: 'Vainqueur : Q. Halys', score: '6-4, 7-5, 6-7, 6-1', won: true },
+                    { match: 'Roman A. Burruchaga - Karen Khachanov', sel: 'Vainqueur : K. Khachanov', score: '3-6, 0-6, 1-6', won: true },
+                    { match: 'E. Cocciaretto - Katerina Siniakova', sel: 'Vainqueur : K. Siniakova', score: '3-6, 2-6', won: true }
+                ]
+            },
+            5: {
+                date: '31.08.2026', odds: '@ 2.11', stake: '500', pct: '(5.0% Bankroll)', status: 'WIN', pnl: '555.00',
+                picks: [
+                    { match: 'Chwalinska, M. - Townsend, T.', sel: 'Joueur 2 pour gagner un set : Oui', score: '', won: true },
+                    { match: 'Snigur, D. - Shnaider, D.', sel: 'Joueur 2 pour gagner un set : Oui', score: '', won: true },
+                    { match: 'Zidansek, T. - Timofeeva, M.', sel: 'Joueur 2 pour gagner un set : Oui', score: '', won: true },
+                    { match: 'Darderi, L. - Wendelken, H.', sel: 'Joueur 1 gagne un set : Oui', score: '', won: true },
+                    { match: 'Safiullin, R. - Alcaraz, C.', sel: 'Joueur 2 pour gagner un set : Oui', score: '', won: true },
+                    { match: 'Shang, J. - Trungelliti, M.', sel: 'Joueur 1 gagne un set : Oui', score: '', won: true },
+                    { match: 'Hanfmann, Y. - Tabilo, A.', sel: 'Joueur 2 pour gagner un set : Oui', score: '', won: true },
+                    { match: 'Halys, Q. - Diaz Acosta, F.', sel: 'Joueur 1 gagne un set : Oui', score: '', won: true },
+                    { match: 'Burruchaga, R. - Khachanov, K.', sel: 'Joueur 2 pour gagner un set : Oui', score: '', won: true }
+                ]
+            },
+            4: {
+                date: '31.08.2026', odds: '@ 2.06', stake: '500', pct: '(5.0% Bankroll)', status: 'WIN', pnl: '530.00',
+                picks: [
+                    { match: 'Safiullin, R. - Alcaraz, C.', sel: 'Vainqueur du match : 2', score: '', won: true },
+                    { match: 'Burruchaga, R. - Khachanov, K.', sel: 'Vainqueur du match : 2', score: '', won: true },
+                    { match: 'Darderi, L. - Wendelken, H.', sel: 'Vainqueur du match : 1', score: '', won: true },
+                    { match: 'Shang, J. - Trungelliti, M.', sel: 'Joueur 1 gagne un set : Oui', score: '', won: true }
+                ]
+            },
+            3: {
+                date: '30.08.2026', odds: '@ 5.01', stake: '150', pct: '(1.5% Bankroll)', status: 'LOSS', pnl: '150.00',
+                picks: [
+                    { match: 'Amariei, Ilinca Dalina - Lahey, A.', sel: 'Vainqueur du match : 1', score: 'Score final : 1:2', won: false },
+                    { match: 'V
