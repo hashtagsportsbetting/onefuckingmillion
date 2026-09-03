@@ -67,7 +67,7 @@
         .progress-percentage { font-family: 'Righteous', cursive; font-size: 1.6rem; color: var(--neon-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
 
         .gauge-track { width: 100%; height: 22px; background: rgba(0, 0, 0, 0.8); border: 1px solid var(--neon-cyan); border-radius: 12px; overflow: hidden; padding: 2px; }
-        .gauge-fill { height: 100%; width: 1.28%; background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--win-green)); border-radius: 8px; box-shadow: 0 0 15px var(--neon-cyan); }
+        .gauge-fill { height: 100%; width: 1.40%; background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--win-green)); border-radius: 8px; box-shadow: 0 0 15px var(--neon-cyan); }
         .gauge-milestones { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.85rem; color: #888; }
         .gauge-milestones span.active { color: var(--neon-cyan); font-weight: bold; }
 
@@ -111,6 +111,7 @@
         }
         .card-win { border-left: 4px solid var(--win-green); border-right: 1px solid rgba(0, 255, 0, 0.3); border-top: 1px solid rgba(0, 255, 0, 0.3); border-bottom: 1px solid rgba(0, 255, 0, 0.3); box-shadow: 0 0 25px rgba(0, 255, 0, 0.15); }
         .card-loss { border-left: 4px solid var(--loss-red); border-right: 1px solid rgba(255, 68, 68, 0.3); border-top: 1px solid rgba(255, 68, 68, 0.3); border-bottom: 1px solid rgba(255, 68, 68, 0.3); box-shadow: 0 0 25px rgba(255, 68, 68, 0.15); }
+        .card-pending { border-left: 4px solid var(--pending-white); border-right: 1px solid rgba(255, 255, 255, 0.3); border-top: 1px solid rgba(255, 255, 255, 0.3); border-bottom: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 0 25px rgba(255, 255, 255, 0.15); }
 
         .pop-close {
             position: absolute; top: 10px; right: 15px; color: #fff; font-size: 1.5rem;
@@ -124,6 +125,7 @@
         .pop-badge { padding: 3px 8px; border-radius: 3px; font-weight: bold; font-family: 'Righteous', cursive; }
         .card-win .pop-badge { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
         .card-loss .pop-badge { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
+        .card-pending .pop-badge { background: rgba(255, 255, 255, 0.2); color: var(--pending-white); }
 
         .pop-scroll { overflow-y: auto; padding-right: 5px; margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px; }
 
@@ -141,11 +143,21 @@
         .badge-won { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
         .badge-lost { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
 
+        .locked-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 22px 12px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
         .pop-details { color: #ccc; font-size: 0.95rem; flex-shrink: 0; }
         .pop-pnl-box { margin-top: 10px; background: rgba(0, 0, 0, 0.6); padding: 15px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; flex-shrink: 0; }
         
         .card-win .pop-pnl-val { color: var(--win-green); }
         .card-loss .pop-pnl-val { color: var(--loss-red); }
+        .card-pending .pop-pnl-val { color: var(--pending-white); }
 
         footer { width: 100%; background: #000; height: 50px; text-align: center; border-top: 1px solid #222; color: #888; font-size: 0.8rem; margin-top: auto; display: flex; flex-direction: column; justify-content: center; }
         .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
@@ -165,7 +177,7 @@
         <section class="progress-card">
             <div class="progress-header">
                 <div class="progress-title">ROAD TO 1,000,000 🚀</div>
-                <div class="progress-percentage">1.28%</div>
+                <div class="progress-percentage">1.40%</div>
             </div>
             <div class="gauge-track">
                 <div class="gauge-fill"></div>
@@ -179,7 +191,7 @@
         <section class="dashboard">
             <div class="stat-box">
                 <div class="stat-label">Current Bankroll</div>
-                <div class="stat-value stat-profit">12,792.04</div>
+                <div class="stat-value stat-profit">13,974.59</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Days In Journey</div>
@@ -192,7 +204,12 @@
                 <span>BET HISTORY (NEW TO OLD)</span>
             </div>
             <div class="mosaic-grid">
-                <!-- 3 DU 02/09 (RÉGLÉS MAINTENANT) -->
+                <!-- 3 PENDING DU 03/09 -->
+                <a href="#slip-15" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 5.24</a>
+                <a href="#slip-14" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 1.93</a>
+                <a href="#slip-13" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 1.98</a>
+
+                <!-- 3 DU 02/09 (RÉGLÉS) -->
                 <a href="#slip-12" class="mosaic-item bg-loss">-119.30</a>
                 <a href="#slip-11" class="mosaic-item bg-win">+751.59</a>
                 <a href="#slip-10" class="mosaic-item bg-loss">-596.50</a>
@@ -233,10 +250,82 @@
     </div>
     <div class="pop-overlay" id="modal-privacy">
         <a href="#" class="pop-backdrop-link"></a>
-        <div class="pop-basic-content"><a href="#" class="pop-close">✕</a><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Privacy Policy</h2><p style="margin-top:10px;">Votre email et vos informations personnelles ne seront jamais partagés ni commercialisés auprès de tiers.</p></div>
+        <div class="pop-basic-content"><a href="#" class="pop-close">✕</a><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Privacy Policy</h2><p style="margin-top:10px;">Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des agences de marketing tierces.</p></div>
     </div>
 
-    <!-- SLIP 12 (SETTLED LOSS - 02.09 • @ 10.16 • MISE 1%) -->
+    <!-- SLIP 15 (PENDING - 03.09 • @ 5.24 • MISE 1%) -->
+    <div class="pop-overlay" id="slip-15">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-card card-pending">
+            <a href="#" class="pop-close">✕</a>
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;">03.09.2026 • Accumulator (4 Legs)</span>
+                <span class="pop-badge">PENDING</span>
+            </div>
+            <div class="locked-box">
+                <div style="font-family:'Righteous',cursive; color:#fff; font-size:1rem; margin-bottom:4px;">🔒 LOCKED SELECTIONS</div>
+                <div style="font-size:0.8rem; color:#aaa;">4 Legs Tennis Acca (Hidden) — Revealed After Settlement</div>
+            </div>
+            <div class="pop-details">
+                Stake: <span style="color:#fff; font-weight:bold;">139.75</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(1.0% Bankroll)</span><br>
+                Total Odds: <span style="color:#fff; font-weight:bold;">@ 5.24</span>
+            </div>
+            <div class="pop-pnl-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIP 14 (PENDING - 03.09 • @ 1.93 • MISE 5%) -->
+    <div class="pop-overlay" id="slip-14">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-card card-pending">
+            <a href="#" class="pop-close">✕</a>
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;">03.09.2026 • Accumulator (5 Legs)</span>
+                <span class="pop-badge">PENDING</span>
+            </div>
+            <div class="locked-box">
+                <div style="font-family:'Righteous',cursive; color:#fff; font-size:1rem; margin-bottom:4px;">🔒 LOCKED SELECTIONS</div>
+                <div style="font-size:0.8rem; color:#aaa;">5 Legs Tennis Acca (Hidden) — Revealed After Settlement</div>
+            </div>
+            <div class="pop-details">
+                Stake: <span style="color:#fff; font-weight:bold;">698.73</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(5.0% Bankroll)</span><br>
+                Total Odds: <span style="color:#fff; font-weight:bold;">@ 1.93</span>
+            </div>
+            <div class="pop-pnl-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIP 13 (PENDING - 03.09 • @ 1.98 • MISE 5%) -->
+    <div class="pop-overlay" id="slip-13">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-card card-pending">
+            <a href="#" class="pop-close">✕</a>
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;">03.09.2026 • Accumulator (3 Legs)</span>
+                <span class="pop-badge">PENDING</span>
+            </div>
+            <div class="locked-box">
+                <div style="font-family:'Righteous',cursive; color:#fff; font-size:1rem; margin-bottom:4px;">🔒 LOCKED SELECTIONS</div>
+                <div style="font-size:0.8rem; color:#aaa;">3 Legs Tennis Acca (Hidden) — Revealed After Settlement</div>
+            </div>
+            <div class="pop-details">
+                Stake: <span style="color:#fff; font-weight:bold;">698.73</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(5.0% Bankroll)</span><br>
+                Total Odds: <span style="color:#fff; font-weight:bold;">@ 1.98</span>
+            </div>
+            <div class="pop-pnl-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIP 12 (SETTLED LOSS) -->
     <div class="pop-overlay" id="slip-12">
         <a href="#" class="pop-backdrop-link"></a>
         <div class="pop-card card-loss">
@@ -264,7 +353,7 @@
         </div>
     </div>
 
-    <!-- SLIP 11 (SETTLED WIN - 02.09 • @ 2.26 • MISE 5%) -->
+    <!-- SLIP 11 (SETTLED WIN) -->
     <div class="pop-overlay" id="slip-11">
         <a href="#" class="pop-backdrop-link"></a>
         <div class="pop-card card-win">
@@ -292,7 +381,7 @@
         </div>
     </div>
 
-    <!-- SLIP 10 (SETTLED LOSS - 02.09 • @ 1.985 • MISE 5%) -->
+    <!-- SLIP 10 (SETTLED LOSS) -->
     <div class="pop-overlay" id="slip-10">
         <a href="#" class="pop-backdrop-link"></a>
         <div class="pop-card card-loss">
@@ -318,7 +407,7 @@
         </div>
     </div>
 
-    <!-- SLIP 9 (SETTLED LOSS - 01.09) -->
+    <!-- SLIP 9 (SETTLED LOSS) -->
     <div class="pop-overlay" id="slip-9">
         <a href="#" class="pop-backdrop-link"></a>
         <div class="pop-card card-loss">
@@ -347,7 +436,7 @@
         </div>
     </div>
 
-    <!-- SLIP 8 (SETTLED WIN - 01.09) -->
+    <!-- SLIP 8 (SETTLED WIN) -->
     <div class="pop-overlay" id="slip-8">
         <a href="#" class="pop-backdrop-link"></a>
         <div class="pop-card card-win">
@@ -375,7 +464,7 @@
         </div>
     </div>
 
-    <!-- SLIP 7 (SETTLED WIN - 01.09) -->
+    <!-- SLIP 7 (SETTLED WIN) -->
     <div class="pop-overlay" id="slip-7">
         <a href="#" class="pop-backdrop-link"></a>
         <div class="pop-card card-win">
