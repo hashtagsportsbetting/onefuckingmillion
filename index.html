@@ -92,7 +92,7 @@
         .bg-loss { background: rgba(255, 68, 68, 0.15); border: 2px solid var(--loss-red); color: var(--loss-red); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
         .bg-pending { background: rgba(255, 255, 255, 0.08); border: 2px solid var(--pending-white); color: var(--pending-white); box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
 
-        /* MODALES PUR HTML/CSS ULTRA FIABLES VIA :target */
+        /* MODALES */
         .pop-overlay {
             display: none;
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -205,66 +205,66 @@
             </div>
             <div class="mosaic-grid">
                 <!-- 3 PENDING DU 04/09 -->
-                <a href="#slip-18" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 5.14</a>
-                <a href="#slip-17" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 2.35</a>
-                <a href="#slip-16" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 2.02</a>
+                <a href="#slip-18" onclick="document.getElementById('slip-18').style.display='flex'" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 5.14</a>
+                <a href="#slip-17" onclick="document.getElementById('slip-17').style.display='flex'" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 2.35</a>
+                <a href="#slip-16" onclick="document.getElementById('slip-16').style.display='flex'" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 2.02</a>
 
                 <!-- 3 DU 03/09 (RÉGLÉS) -->
-                <a href="#slip-15" class="mosaic-item bg-loss">-127.92</a>
-                <a href="#slip-14" class="mosaic-item bg-loss">-639.60</a>
-                <a href="#slip-13" class="mosaic-item bg-win">+626.81</a>
+                <a href="#slip-15" onclick="document.getElementById('slip-15').style.display='flex'" class="mosaic-item bg-loss">-127.92</a>
+                <a href="#slip-14" onclick="document.getElementById('slip-14').style.display='flex'" class="mosaic-item bg-loss">-639.60</a>
+                <a href="#slip-13" onclick="document.getElementById('slip-13').style.display='flex'" class="mosaic-item bg-win">+626.81</a>
 
                 <!-- 3 DU 02/09 (RÉGLÉS) -->
-                <a href="#slip-12" class="mosaic-item bg-loss">-119.30</a>
-                <a href="#slip-11" class="mosaic-item bg-win">+751.59</a>
-                <a href="#slip-10" class="mosaic-item bg-loss">-596.50</a>
+                <a href="#slip-12" onclick="document.getElementById('slip-12').style.display='flex'" class="mosaic-item bg-loss">-119.30</a>
+                <a href="#slip-11" onclick="document.getElementById('slip-11').style.display='flex'" class="mosaic-item bg-win">+751.59</a>
+                <a href="#slip-10" onclick="document.getElementById('slip-10').style.display='flex'" class="mosaic-item bg-loss">-596.50</a>
 
                 <!-- 3 DU 01/09 (RÉGLÉS) -->
-                <a href="#slip-9" class="mosaic-item bg-loss">-119.30</a>
-                <a href="#slip-8" class="mosaic-item bg-win">+295.86</a>
-                <a href="#slip-7" class="mosaic-item bg-win">+650.19</a>
+                <a href="#slip-9" onclick="document.getElementById('slip-9').style.display='flex'" class="mosaic-item bg-loss">-119.30</a>
+                <a href="#slip-8" onclick="document.getElementById('slip-8').style.display='flex'" class="mosaic-item bg-win">+295.86</a>
+                <a href="#slip-7" onclick="document.getElementById('slip-7').style.display='flex'" class="mosaic-item bg-win">+650.19</a>
 
                 <!-- 6 DU 30-31/08 (RÉGLÉS) -->
-                <a href="#slip-6" class="mosaic-item bg-loss">-150</a>
-                <a href="#slip-5" class="mosaic-item bg-win">+555</a>
-                <a href="#slip-4" class="mosaic-item bg-win">+530</a>
-                <a href="#slip-3" class="mosaic-item bg-loss">-150</a>
-                <a href="#slip-2" class="mosaic-item bg-win">+574.50</a>
-                <a href="#slip-1" class="mosaic-item bg-win">+570</a>
+                <a href="#slip-6" onclick="document.getElementById('slip-6').style.display='flex'" class="mosaic-item bg-loss">-150</a>
+                <a href="#slip-5" onclick="document.getElementById('slip-5').style.display='flex'" class="mosaic-item bg-win">+555</a>
+                <a href="#slip-4" onclick="document.getElementById('slip-4').style.display='flex'" class="mosaic-item bg-win">+530</a>
+                <a href="#slip-3" onclick="document.getElementById('slip-3').style.display='flex'" class="mosaic-item bg-loss">-150</a>
+                <a href="#slip-2" onclick="document.getElementById('slip-2').style.display='flex'" class="mosaic-item bg-win">+574.50</a>
+                <a href="#slip-1" onclick="document.getElementById('slip-1').style.display='flex'" class="mosaic-item bg-win">+570</a>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="footer-links">
-            <a href="#modal-tos">TOS</a> |
-            <a href="#modal-privacy">Privacy</a> |
-            <a href="#modal-legal">Legal Notice</a>
+            <a href="#modal-tos" onclick="document.getElementById('modal-tos').style.display='flex'">TOS</a> |
+            <a href="#modal-privacy" onclick="document.getElementById('modal-privacy').style.display='flex'">Privacy</a> |
+            <a href="#modal-legal" onclick="document.getElementById('modal-legal').style.display='flex'">Legal Notice</a>
         </div>
         <p style="margin-top:4px;">&copy; 2026 OneFuckingMillion.com</p>
     </footer>
 
     <!-- LEGAL MODALS -->
     <div class="pop-overlay" id="modal-legal">
-        <a href="#" class="pop-backdrop-link"></a>
-        <div class="pop-basic-content"><a href="#" class="pop-close">✕</a><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Legal Notice</h2><p style="margin-top:10px;"><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p></div>
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
+        <div class="pop-basic-content"><span onclick="document.getElementById('modal-legal').style.display='none'" class="pop-close">✕</span><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Legal Notice</h2><p style="margin-top:10px;"><strong>Editeur :</strong> Charles Edouard Chambers Farah.<br><strong>SIRET :</strong> 790 059 190.<br><strong>Adresse :</strong> 18 RUE SAINT-MARC, 75002 PARIS, FRANCE.</p></div>
     </div>
     <div class="pop-overlay" id="modal-tos">
-        <a href="#" class="pop-backdrop-link"></a>
-        <div class="pop-basic-content"><a href="#" class="pop-close">✕</a><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Terms of Service</h2><p style="margin-top:10px;">En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous documentons un défi personnel de capitalisation, nous ne sommes pas un bookmaker.</p></div>
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
+        <div class="pop-basic-content"><span onclick="document.getElementById('modal-tos').style.display='none'" class="pop-close">✕</span><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Terms of Service</h2><p style="margin-top:10px;">En utilisant ce service, vous reconnaissez que les paris comportent des risques financiers significatifs. Nous documentons un défi personnel de capitalisation, nous ne sommes pas un bookmaker.</p></div>
     </div>
     <div class="pop-overlay" id="modal-privacy">
-        <a href="#" class="pop-backdrop-link"></a>
-        <div class="pop-basic-content"><a href="#" class="pop-close">✕</a><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Privacy Policy</h2><p style="margin-top:10px;">Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des tiers.</p></div>
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
+        <div class="pop-basic-content"><span onclick="document.getElementById('modal-privacy').style.display='none'" class="pop-close">✕</span><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Privacy Policy</h2><p style="margin-top:10px;">Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des tiers.</p></div>
     </div>
 
-    <!-- ==================== 18 BETSLIP MODALS EN DUR ==================== -->
+    <!-- ==================== LES 18 MODALES ==================== -->
 
-    <!-- SLIP 18 (PENDING - 04.09 • @ 5.14 • 1%) -->
+    <!-- SLIP 18 (PENDING - 04.09 • @ 5.14) -->
     <div class="pop-overlay" id="slip-18">
-        <a href="#" class="pop-backdrop-link"></a>
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
         <div class="pop-card card-pending">
-            <a href="#" class="pop-close">✕</a>
+            <span onclick="document.getElementById('slip-18').style.display='none'" class="pop-close">✕</span>
             <div class="pop-topbar">
                 <span style="color:#aaa; font-size:0.85rem;">04.09.2026 • Accumulator (4 Legs)</span>
                 <span class="pop-badge">PENDING</span>
@@ -284,11 +284,11 @@
         </div>
     </div>
 
-    <!-- SLIP 17 (PENDING - 04.09 • @ 2.35 • 1%) -->
+    <!-- SLIP 17 (PENDING - 04.09 • @ 2.35) -->
     <div class="pop-overlay" id="slip-17">
-        <a href="#" class="pop-backdrop-link"></a>
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
         <div class="pop-card card-pending">
-            <a href="#" class="pop-close">✕</a>
+            <span onclick="document.getElementById('slip-17').style.display='none'" class="pop-close">✕</span>
             <div class="pop-topbar">
                 <span style="color:#aaa; font-size:0.85rem;">04.09.2026 • Accumulator (4 Legs)</span>
                 <span class="pop-badge">PENDING</span>
@@ -308,39 +308,8 @@
         </div>
     </div>
 
-    <!-- SLIP 16 (PENDING - 04.09 • @ 2.02 • 5%) -->
+    <!-- SLIP 16 (PENDING - 04.09 • @ 2.02) -->
     <div class="pop-overlay" id="slip-16">
-        <a href="#" class="pop-backdrop-link"></a>
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
         <div class="pop-card card-pending">
-            <a href="#" class="pop-close">✕</a>
-            <div class="pop-topbar">
-                <span style="color:#aaa; font-size:0.85rem;">04.09.2026 • Accumulator (2 Legs)</span>
-                <span class="pop-badge">PENDING</span>
-            </div>
-            <div class="locked-box">
-                <div style="font-family:'Righteous',cursive; color:#fff; font-size:1rem; margin-bottom:4px;">🔒 LOCKED SELECTIONS</div>
-                <div style="font-size:0.8rem; color:#aaa;">2 Legs Tennis Acca (Hidden) — Revealed After Settlement</div>
-            </div>
-            <div class="pop-details">
-                Stake: <span style="color:#fff; font-weight:bold;">632.57</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(5.0% Bankroll)</span><br>
-                Total Odds: <span style="color:#fff; font-weight:bold;">@ 2.02</span>
-            </div>
-            <div class="pop-pnl-box">
-                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
-                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIP 15 (SETTLED LOSS - 03.09 • @ 5.24 • 1%) -->
-    <div class="pop-overlay" id="slip-15">
-        <a href="#" class="pop-backdrop-link"></a>
-        <div class="pop-card card-loss">
-            <a href="#" class="pop-close">✕</a>
-            <div class="pop-topbar">
-                <span style="color:#aaa; font-size:0.85rem;">03.09.2026 • Accumulator (7 Legs)</span>
-                <span class="pop-badge">LOST</span>
-            </div>
-            <div class="pop-scroll">
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. Strakhova vs Carle</div><div class="slip-pick">Vainqueur du match : 2 (1:2)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2
+            <span onclick="document.getElementById('sli
