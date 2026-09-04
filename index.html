@@ -92,22 +92,23 @@
         .bg-loss { background: rgba(255, 68, 68, 0.15); border: 2px solid var(--loss-red); color: var(--loss-red); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
         .bg-pending { background: rgba(255, 255, 255, 0.08); border: 2px solid var(--pending-white); color: var(--pending-white); box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
 
-        /* MODALES PUR CSS (:target) */
+        /* MODALES PUR CSS AVEC OPACITY & POINTER-EVENTS */
         .pop-overlay {
-            display: none;
+            visibility: hidden; opacity: 0; pointer-events: none;
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(5px); z-index: 9999;
-            justify-content: center; align-items: center; padding: 15px;
+            display: flex; justify-content: center; align-items: center; padding: 15px;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
         }
         .pop-overlay:target {
-            display: flex;
+            visibility: visible; opacity: 1; pointer-events: auto;
         }
 
         .pop-card {
             background: linear-gradient(135deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
             background-color: #050010; border-radius: 8px; padding: 20px; width: 100%;
             max-width: 520px; position: relative; max-height: 85vh; display: flex; flex-direction: column;
-            z-index: 2;
+            z-index: 10;
         }
         .card-win { border-left: 4px solid var(--win-green); border-right: 1px solid rgba(0, 255, 0, 0.3); border-top: 1px solid rgba(0, 255, 0, 0.3); border-bottom: 1px solid rgba(0, 255, 0, 0.3); box-shadow: 0 0 25px rgba(0, 255, 0, 0.15); }
         .card-loss { border-left: 4px solid var(--loss-red); border-right: 1px solid rgba(255, 68, 68, 0.3); border-top: 1px solid rgba(255, 68, 68, 0.3); border-bottom: 1px solid rgba(255, 68, 68, 0.3); box-shadow: 0 0 25px rgba(255, 68, 68, 0.15); }
@@ -115,10 +116,10 @@
 
         .pop-close {
             position: absolute; top: 10px; right: 15px; color: #fff; font-size: 1.5rem;
-            cursor: pointer; font-family: sans-serif; opacity: 0.7; z-index: 3;
+            cursor: pointer; font-family: sans-serif; opacity: 0.7; z-index: 20;
         }
         .pop-backdrop-link {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5;
         }
 
         .pop-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; margin-top: 5px; flex-shrink: 0; }
@@ -161,7 +162,7 @@
 
         footer { width: 100%; background: #000; height: 50px; text-align: center; border-top: 1px solid #222; color: #888; font-size: 0.8rem; margin-top: auto; display: flex; flex-direction: column; justify-content: center; }
         .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
-        .pop-basic-content { background: #0a0a0a; border: 2px solid var(--neon-cyan); padding: 30px; width: 90%; max-width: 600px; color: #fff; position: relative; z-index: 2; }
+        .pop-basic-content { background: #0a0a0a; border: 2px solid var(--neon-cyan); padding: 30px; width: 90%; max-width: 600px; color: #fff; position: relative; z-index: 10; }
     </style>
 </head>
 <body>
@@ -341,4 +342,4 @@
             </div>
             <div class="pop-scroll">
                 <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. Strakhova, Valeriya - Carle, ML</div><div class="slip-pick">Vainqueur du match : 2 (1:2)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. Butvilas, Edas - Bertola, Remy</div><div class="slip-pick">Vainqueur du match : 1</div></div><span class="sl
+                <div cl
