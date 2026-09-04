@@ -92,22 +92,22 @@
         .bg-loss { background: rgba(255, 68, 68, 0.15); border: 2px solid var(--loss-red); color: var(--loss-red); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
         .bg-pending { background: rgba(255, 255, 255, 0.08); border: 2px solid var(--pending-white); color: var(--pending-white); box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
 
-        /* MODALES PUR CSS (VISIBILITY / OPACITY) */
+        /* MODALES PUR CSS (:target) */
         .pop-overlay {
-            visibility: hidden; opacity: 0; pointer-events: none;
+            display: none;
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(5px); z-index: 9999;
-            display: flex; justify-content: center; align-items: center; padding: 15px;
-            transition: opacity 0.2s ease, visibility 0.2s ease;
+            justify-content: center; align-items: center; padding: 15px;
         }
         .pop-overlay:target {
-            visibility: visible; opacity: 1; pointer-events: auto;
+            display: flex;
         }
 
         .pop-card {
             background: linear-gradient(135deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
             background-color: #050010; border-radius: 8px; padding: 20px; width: 100%;
             max-width: 520px; position: relative; max-height: 85vh; display: flex; flex-direction: column;
+            z-index: 2;
         }
         .card-win { border-left: 4px solid var(--win-green); border-right: 1px solid rgba(0, 255, 0, 0.3); border-top: 1px solid rgba(0, 255, 0, 0.3); border-bottom: 1px solid rgba(0, 255, 0, 0.3); box-shadow: 0 0 25px rgba(0, 255, 0, 0.15); }
         .card-loss { border-left: 4px solid var(--loss-red); border-right: 1px solid rgba(255, 68, 68, 0.3); border-top: 1px solid rgba(255, 68, 68, 0.3); border-bottom: 1px solid rgba(255, 68, 68, 0.3); box-shadow: 0 0 25px rgba(255, 68, 68, 0.15); }
@@ -115,7 +115,7 @@
 
         .pop-close {
             position: absolute; top: 10px; right: 15px; color: #fff; font-size: 1.5rem;
-            cursor: pointer; font-family: sans-serif; opacity: 0.7; z-index: 2;
+            cursor: pointer; font-family: sans-serif; opacity: 0.7; z-index: 3;
         }
         .pop-backdrop-link {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
@@ -258,7 +258,7 @@
         <div class="pop-basic-content"><a href="#" class="pop-close">✕</a><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Privacy Policy</h2><p style="margin-top:10px;">Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des agences de marketing tierces.</p></div>
     </div>
 
-    <!-- SLIP 18 (PENDING - 04.09 • @ 5.14 • MISE 1%) -->
+    <!-- SLIP 18 (PENDING - 04.09 • @ 5.14) -->
     <div class="pop-overlay" id="slip-18">
         <a href="#" class="pop-backdrop-link"></a>
         <div class="pop-card card-pending">
@@ -282,7 +282,7 @@
         </div>
     </div>
 
-    <!-- SLIP 17 (PENDING - 04.09 • @ 2.35 • MISE 1%) -->
+    <!-- SLIP 17 (PENDING - 04.09 • @ 2.35) -->
     <div class="pop-overlay" id="slip-17">
         <a href="#" class="pop-backdrop-link"></a>
         <div class="pop-card card-pending">
@@ -306,7 +306,7 @@
         </div>
     </div>
 
-    <!-- SLIP 16 (PENDING - 04.09 • @ 2.02 • MISE 5%) -->
+    <!-- SLIP 16 (PENDING - 04.09 • @ 2.02) -->
     <div class="pop-overlay" id="slip-16">
         <a href="#" class="pop-backdrop-link"></a>
         <div class="pop-card card-pending">
@@ -330,7 +330,7 @@
         </div>
     </div>
 
-    <!-- SLIP 15 (SETTLED LOSS) -->
+    <!-- SLIP 15 (SETTLED LOSS - 03.09) -->
     <div class="pop-overlay" id="slip-15">
         <a href="#" class="pop-backdrop-link"></a>
         <div class="pop-card card-loss">
@@ -341,4 +341,4 @@
             </div>
             <div class="pop-scroll">
                 <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. Strakhova, Valeriya - Carle, ML</div><div class="slip-pick">Vainqueur du match : 2 (1:2)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-ro
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. Butvilas, Edas - Bertola, Remy</div><div class="slip-pick">Vainqueur du match : 1</div></div><span class="sl
