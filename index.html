@@ -90,6 +90,7 @@
 
         .bg-win { background: rgba(0, 255, 0, 0.15); border: 2px solid var(--win-green); color: var(--win-green); box-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
         .bg-loss { background: rgba(255, 68, 68, 0.15); border: 2px solid var(--loss-red); color: var(--loss-red); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
+        .bg-pending { background: rgba(255, 255, 255, 0.08); border: 2px solid var(--pending-white); color: var(--pending-white); box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
 
         /* MODALES PUR CSS (VISIBILITY / OPACITY) */
         .pop-overlay {
@@ -110,6 +111,7 @@
         }
         .card-win { border-left: 4px solid var(--win-green); border-right: 1px solid rgba(0, 255, 0, 0.3); border-top: 1px solid rgba(0, 255, 0, 0.3); border-bottom: 1px solid rgba(0, 255, 0, 0.3); box-shadow: 0 0 25px rgba(0, 255, 0, 0.15); }
         .card-loss { border-left: 4px solid var(--loss-red); border-right: 1px solid rgba(255, 68, 68, 0.3); border-top: 1px solid rgba(255, 68, 68, 0.3); border-bottom: 1px solid rgba(255, 68, 68, 0.3); box-shadow: 0 0 25px rgba(255, 68, 68, 0.15); }
+        .card-pending { border-left: 4px solid var(--pending-white); border-right: 1px solid rgba(255, 255, 255, 0.3); border-top: 1px solid rgba(255, 255, 255, 0.3); border-bottom: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 0 25px rgba(255, 255, 255, 0.15); }
 
         .pop-close {
             position: absolute; top: 10px; right: 15px; color: #fff; font-size: 1.5rem;
@@ -123,6 +125,7 @@
         .pop-badge { padding: 3px 8px; border-radius: 3px; font-weight: bold; font-family: 'Righteous', cursive; }
         .card-win .pop-badge { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
         .card-loss .pop-badge { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
+        .card-pending .pop-badge { background: rgba(255, 255, 255, 0.2); color: var(--pending-white); }
 
         .pop-scroll { overflow-y: auto; padding-right: 5px; margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px; }
 
@@ -140,11 +143,21 @@
         .badge-won { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
         .badge-lost { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
 
+        .locked-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 22px 12px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
         .pop-details { color: #ccc; font-size: 0.95rem; flex-shrink: 0; }
         .pop-pnl-box { margin-top: 10px; background: rgba(0, 0, 0, 0.6); padding: 15px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; flex-shrink: 0; }
         
         .card-win .pop-pnl-val { color: var(--win-green); }
         .card-loss .pop-pnl-val { color: var(--loss-red); }
+        .card-pending .pop-pnl-val { color: var(--pending-white); }
 
         footer { width: 100%; background: #000; height: 50px; text-align: center; border-top: 1px solid #222; color: #888; font-size: 0.8rem; margin-top: auto; display: flex; flex-direction: column; justify-content: center; }
         .footer-links a { color: #aaa; text-decoration: none; margin: 0 10px; cursor: pointer; }
@@ -182,7 +195,7 @@
             </div>
             <div class="stat-box">
                 <div class="stat-label">Days In Journey</div>
-                <div class="stat-value">Day 5</div>
+                <div class="stat-value">Day 6</div>
             </div>
         </section>
 
@@ -191,6 +204,11 @@
                 <span>BET HISTORY (NEW TO OLD)</span>
             </div>
             <div class="mosaic-grid">
+                <!-- 3 PENDING DU 04/09 -->
+                <a href="#slip-18" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 5.14</a>
+                <a href="#slip-17" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 2.35</a>
+                <a href="#slip-16" class="mosaic-item bg-pending"><span style="font-size:0.55rem; color:#aaa; display:block;">PENDING</span>@ 2.02</a>
+
                 <!-- 3 DU 03/09 (RÉGLÉS) -->
                 <a href="#slip-15" class="mosaic-item bg-loss">-127.92</a>
                 <a href="#slip-14" class="mosaic-item bg-loss">-639.60</a>
@@ -240,7 +258,79 @@
         <div class="pop-basic-content"><a href="#" class="pop-close">✕</a><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Privacy Policy</h2><p style="margin-top:10px;">Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des agences de marketing tierces.</p></div>
     </div>
 
-    <!-- SLIP 15 (SETTLED LOSS - 03.09 • @ 5.24 • MISE 1%) -->
+    <!-- SLIP 18 (PENDING - 04.09 • @ 5.14 • MISE 1%) -->
+    <div class="pop-overlay" id="slip-18">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-card card-pending">
+            <a href="#" class="pop-close">✕</a>
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;">04.09.2026 • Accumulator (4 Legs)</span>
+                <span class="pop-badge">PENDING</span>
+            </div>
+            <div class="locked-box">
+                <div style="font-family:'Righteous',cursive; color:#fff; font-size:1rem; margin-bottom:4px;">🔒 LOCKED SELECTIONS</div>
+                <div style="font-size:0.8rem; color:#aaa;">4 Legs Tennis Acca (Hidden) — Revealed After Settlement</div>
+            </div>
+            <div class="pop-details">
+                Stake: <span style="color:#fff; font-weight:bold;">126.51</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(1.0% Bankroll)</span><br>
+                Total Odds: <span style="color:#fff; font-weight:bold;">@ 5.14</span>
+            </div>
+            <div class="pop-pnl-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIP 17 (PENDING - 04.09 • @ 2.35 • MISE 1%) -->
+    <div class="pop-overlay" id="slip-17">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-card card-pending">
+            <a href="#" class="pop-close">✕</a>
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;">04.09.2026 • Accumulator (4 Legs)</span>
+                <span class="pop-badge">PENDING</span>
+            </div>
+            <div class="locked-box">
+                <div style="font-family:'Righteous',cursive; color:#fff; font-size:1rem; margin-bottom:4px;">🔒 LOCKED SELECTIONS</div>
+                <div style="font-size:0.8rem; color:#aaa;">4 Legs Sets Acca (Hidden) — Revealed After Settlement</div>
+            </div>
+            <div class="pop-details">
+                Stake: <span style="color:#fff; font-weight:bold;">126.51</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(1.0% Bankroll)</span><br>
+                Total Odds: <span style="color:#fff; font-weight:bold;">@ 2.35</span>
+            </div>
+            <div class="pop-pnl-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIP 16 (PENDING - 04.09 • @ 2.02 • MISE 5%) -->
+    <div class="pop-overlay" id="slip-16">
+        <a href="#" class="pop-backdrop-link"></a>
+        <div class="pop-card card-pending">
+            <a href="#" class="pop-close">✕</a>
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;">04.09.2026 • Accumulator (2 Legs)</span>
+                <span class="pop-badge">PENDING</span>
+            </div>
+            <div class="locked-box">
+                <div style="font-family:'Righteous',cursive; color:#fff; font-size:1rem; margin-bottom:4px;">🔒 LOCKED SELECTIONS</div>
+                <div style="font-size:0.8rem; color:#aaa;">2 Legs Tennis Acca (Hidden) — Revealed After Settlement</div>
+            </div>
+            <div class="pop-details">
+                Stake: <span style="color:#fff; font-weight:bold;">632.57</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(5.0% Bankroll)</span><br>
+                Total Odds: <span style="color:#fff; font-weight:bold;">@ 2.02</span>
+            </div>
+            <div class="pop-pnl-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIP 15 (SETTLED LOSS) -->
     <div class="pop-overlay" id="slip-15">
         <a href="#" class="pop-backdrop-link"></a>
         <div class="pop-card card-loss">
@@ -251,60 +341,4 @@
             </div>
             <div class="pop-scroll">
                 <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. Strakhova, Valeriya - Carle, ML</div><div class="slip-pick">Vainqueur du match : 2 (1:2)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. Butvilas, Edas - Bertola, Remy</div><div class="slip-pick">Vainqueur du match : 1</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">3. Struff, Jan-Lennard - Cerundolo, Francisco</div><div class="slip-pick">Joueur 1 gagne un set : Oui (2:3)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">4. Timofeeva, Maria - Mertens, Elise</div><div class="slip-pick">Vainqueur du match : 2 (0:2)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">5. Potapova, Anastasia - Jeanjean, Leolia</div><div class="slip-pick">Vainqueur du match : 1 (2:1)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">6. Blockx, Alexander - Trungelliti, Marco</div><div class="slip-pick">Vainqueur du match : 1 (3:1)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-loss"><div class="slip-info"><div class="slip-match">7. Van de Zandschulp - De Minaur, Alex</div><div class="slip-pick">Vainqueur du match : 2 (3:0)</div></div><span class="slip-badge badge-lost">LOSS</span></div>
-            </div>
-            <div class="pop-details">
-                Stake: <span style="color:#fff; font-weight:bold;">127.92</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(1.0% Bankroll)</span><br>
-                Total Odds: <span style="color:#fff; font-weight:bold;">@ 5.24</span>
-            </div>
-            <div class="pop-pnl-box">
-                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
-                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">-127.92</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIP 14 (SETTLED LOSS - 03.09 • @ 1.93 • MISE 5%) -->
-    <div class="pop-overlay" id="slip-14">
-        <a href="#" class="pop-backdrop-link"></a>
-        <div class="pop-card card-loss">
-            <a href="#" class="pop-close">✕</a>
-            <div class="pop-topbar">
-                <span style="color:#aaa; font-size:0.85rem;">03.09.2026 • Accumulator (5 Legs)</span>
-                <span class="pop-badge">LOST</span>
-            </div>
-            <div class="pop-scroll">
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. Butvilas, Edas - Bertola, Remy</div><div class="slip-pick">Joueur 1 gagne un set : Oui</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. Struff, Jan-Lennard - Cerundolo, Francisco</div><div class="slip-pick">Joueur 1 gagne un set : Oui (2:3)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">3. Timofeeva, Maria - Mertens, Elise</div><div class="slip-pick">Joueur 2 pour gagner un set : Oui (0:2)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">4. Potapova, Anastasia - Jeanjean, Leolia</div><div class="slip-pick">Joueur 1 gagne un set : Oui (2:1)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-loss"><div class="slip-info"><div class="slip-match">5. Van de Zandschulp - De Minaur, Alex</div><div class="slip-pick">Joueur 2 pour gagner un set : Oui (3:0)</div></div><span class="slip-badge badge-lost">LOSS</span></div>
-            </div>
-            <div class="pop-details">
-                Stake: <span style="color:#fff; font-weight:bold;">639.60</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(5.0% Bankroll)</span><br>
-                Total Odds: <span style="color:#fff; font-weight:bold;">@ 1.93</span>
-            </div>
-            <div class="pop-pnl-box">
-                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
-                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">-639.60</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- SLIP 13 (SETTLED WIN - 03.09 • @ 1.98 • MISE 5%) -->
-    <div class="pop-overlay" id="slip-13">
-        <a href="#" class="pop-backdrop-link"></a>
-        <div class="pop-card card-win">
-            <a href="#" class="pop-close">✕</a>
-            <div class="pop-topbar">
-                <span style="color:#aaa; font-size:0.85rem;">03.09.2026 • Accumulator (3 Legs)</span>
-                <span class="pop-badge">WON</span>
-            </div>
-            <div class="pop-scroll">
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. Strakhova, Valeriya - Carle, ML</div><div class="slip-pick">Vainqueur du match : 2 (1:2)</div></div><span class="slip-badge badge-won">WON</span></div>
-                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. Timofeeva, Maria - Mertens, Elise</div><div class="slip-pick">Vainqueur du match : 2 (0:2)</div></div><span class="
+                <div class="slip-ro
