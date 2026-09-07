@@ -184,22 +184,27 @@
         <section class="dashboard">
             <div class="stat-box">
                 <div class="stat-label">Current Bankroll</div>
-                <div class="stat-value stat-profit">14,480.78</div>
-                <div class="stat-label" style="margin-top:6px; margin-bottom:0;">Total P&amp;L: <span class="stat-profit">+4,480.78</span></div>
+                <div class="stat-value stat-profit">14,470.65</div>
+                <div class="stat-label" style="margin-top:6px; margin-bottom:0;">Total P&amp;L: <span class="stat-profit">+4,470.65</span></div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Days In Journey</div>
-                <div class="stat-value">Day 8</div>
+                <div class="stat-value">Day 9</div>
             </div>
         </section>
 
         <section class="mosaic-container">
             <div class="mosaic-title"><span>BET HISTORY (NEW TO OLD)</span></div>
             <div class="mosaic-grid">
-                <!-- 3 DU 06/09 (PENDING) -->
-                <a href="#slip-23" onclick="document.getElementById('slip-23').style.display='flex'" class="mosaic-item bg-pending"><span>PENDING</span><span style="font-size:0.72rem; opacity:0.75; margin-top:2px;">@ 4.16</span></a>
-                <a href="#slip-22" onclick="document.getElementById('slip-22').style.display='flex'" class="mosaic-item bg-pending"><span>PENDING</span><span style="font-size:0.72rem; opacity:0.75; margin-top:2px;">@ 2.77</span></a>
-                <a href="#slip-21" onclick="document.getElementById('slip-21').style.display='flex'" class="mosaic-item bg-pending"><span>PENDING</span><span style="font-size:0.72rem; opacity:0.75; margin-top:2px;">@ 2.13</span></a>
+                <!-- 3 DU 07/09 (PENDING) -->
+                <a href="#slip-26" onclick="document.getElementById('slip-26').style.display='flex'" class="mosaic-item bg-pending"><span>PENDING</span><span style="font-size:0.72rem; opacity:0.75; margin-top:2px;">@ 4.73</span></a>
+                <a href="#slip-25" onclick="document.getElementById('slip-25').style.display='flex'" class="mosaic-item bg-pending"><span>PENDING</span><span style="font-size:0.72rem; opacity:0.75; margin-top:2px;">@ 2.03</span></a>
+                <a href="#slip-24" onclick="document.getElementById('slip-24').style.display='flex'" class="mosaic-item bg-pending"><span>PENDING</span><span style="font-size:0.72rem; opacity:0.75; margin-top:2px;">@ 2.15</span></a>
+
+                <!-- 3 DU 06/09 (SETTLED) -->
+                <a href="#slip-23" onclick="document.getElementById('slip-23').style.display='flex'" class="mosaic-item bg-win">+457.60</a>
+                <a href="#slip-22" onclick="document.getElementById('slip-22').style.display='flex'" class="mosaic-item bg-win">+256.31</a>
+                <a href="#slip-21" onclick="document.getElementById('slip-21').style.display='flex'" class="mosaic-item bg-loss">-724.04</a>
 
                 <!-- 2 DU 05/09 -->
                 <a href="#slip-20" onclick="document.getElementById('slip-20').style.display='flex'" class="mosaic-item bg-loss">-139.91</a>
@@ -259,41 +264,91 @@
         <div class="pop-basic-content"><span onclick="document.getElementById('modal-privacy').style.display='none'" class="pop-close">✕</span><h2 style="color:var(--neon-cyan); font-family:'Righteous',cursive;">Privacy Policy</h2><p style="margin-top:10px;">Votre email est utilisé exclusivement pour l'envoi d'alertes de prédictions et ne sera jamais partagé avec des tiers.</p></div>
     </div>
 
-    <!-- ==================== 23 MODALES ==================== -->
+    <!-- ==================== 26 MODALES ==================== -->
+
+    <!-- SLIP 26 -->
+    <div class="pop-overlay" id="slip-26">
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
+        <div class="pop-card card-pending">
+            <span onclick="document.getElementById('slip-26').style.display='none'" class="pop-close">✕</span>
+            <div class="pop-topbar"><span style="color:#aaa; font-size:0.85rem;">07.09.2026 • Accumulator (4 Legs)</span><span class="pop-badge">PENDING</span></div>
+            <div class="pop-scroll"><div class="locked-box"><div style="font-family:'Righteous',cursive; color:#fff; font-size:1.05rem;">🔒 LOCKED SELECTIONS</div><div style="color:#888; font-size:0.8rem; margin-top:6px;">4 selections hidden until settlement.</div></div></div>
+            <div class="pop-details">Stake: <span style="color:#fff; font-weight:bold;">144.71</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(1.0% Bankroll)</span><br>Total Odds: <span style="color:#fff; font-weight:bold;">@ 4.73</span></div>
+            <div class="pop-pnl-box"><span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span><span style="font-size:1.35rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span></div>
+        </div>
+    </div>
+
+    <!-- SLIP 25 -->
+    <div class="pop-overlay" id="slip-25">
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
+        <div class="pop-card card-pending">
+            <span onclick="document.getElementById('slip-25').style.display='none'" class="pop-close">✕</span>
+            <div class="pop-topbar"><span style="color:#aaa; font-size:0.85rem;">07.09.2026 • Accumulator (4 Legs)</span><span class="pop-badge">PENDING</span></div>
+            <div class="pop-scroll"><div class="locked-box"><div style="font-family:'Righteous',cursive; color:#fff; font-size:1.05rem;">🔒 LOCKED SELECTIONS</div><div style="color:#888; font-size:0.8rem; margin-top:6px;">4 selections hidden until settlement.</div></div></div>
+            <div class="pop-details">Stake: <span style="color:#fff; font-weight:bold;">723.53</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(5.0% Bankroll)</span><br>Total Odds: <span style="color:#fff; font-weight:bold;">@ 2.03</span></div>
+            <div class="pop-pnl-box"><span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span><span style="font-size:1.35rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span></div>
+        </div>
+    </div>
+
+    <!-- SLIP 24 -->
+    <div class="pop-overlay" id="slip-24">
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
+        <div class="pop-card card-pending">
+            <span onclick="document.getElementById('slip-24').style.display='none'" class="pop-close">✕</span>
+            <div class="pop-topbar"><span style="color:#aaa; font-size:0.85rem;">07.09.2026 • Accumulator (2 Legs)</span><span class="pop-badge">PENDING</span></div>
+            <div class="pop-scroll"><div class="locked-box"><div style="font-family:'Righteous',cursive; color:#fff; font-size:1.05rem;">🔒 LOCKED SELECTIONS</div><div style="color:#888; font-size:0.8rem; margin-top:6px;">2 selections hidden until settlement.</div></div></div>
+            <div class="pop-details">Stake: <span style="color:#fff; font-weight:bold;">723.53</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(5.0% Bankroll)</span><br>Total Odds: <span style="color:#fff; font-weight:bold;">@ 2.15</span></div>
+            <div class="pop-pnl-box"><span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span><span style="font-size:1.35rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span></div>
+        </div>
+    </div>
 
     <!-- SLIP 23 -->
     <div class="pop-overlay" id="slip-23">
         <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
-        <div class="pop-card card-pending">
+        <div class="pop-card card-win">
             <span onclick="document.getElementById('slip-23').style.display='none'" class="pop-close">✕</span>
-            <div class="pop-topbar"><span style="color:#aaa; font-size:0.85rem;">06.09.2026 • Accumulator (4 Legs)</span><span class="pop-badge">PENDING</span></div>
-            <div class="pop-scroll"><div class="locked-box"><div style="font-family:'Righteous',cursive; color:#fff; font-size:1.05rem;">🔒 LOCKED SELECTIONS</div><div style="color:#888; font-size:0.8rem; margin-top:6px;">4 selections hidden until settlement.</div></div></div>
+            <div class="pop-topbar"><span style="color:#aaa; font-size:0.85rem;">06.09.2026 • Accumulator (4 Legs)</span><span class="pop-badge">WON</span></div>
+            <div class="pop-scroll">
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. Wessels, Louis - Kachmazov, Alibek</div><div class="slip-pick">Vainqueur du match : 2 — Kachmazov (1.59) — Score : 0:2</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. Trevisan, Martina - Stusek, Julia</div><div class="slip-pick">Vainqueur du match : 1 — Trevisan (1.30) — Score : 2:0</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">3. Montes-De La Torre - Balshaw</div><div class="slip-pick">Joueur 1 gagne un set : Oui (1.55) — Score : 1:2</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">4. Michelsen - Etcheverry</div><div class="slip-pick">Vainqueur du match : 1 — Michelsen (1.30) — Score : 3:0</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+            </div>
             <div class="pop-details">Stake: <span style="color:#fff; font-weight:bold;">144.81</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(1.0% Bankroll)</span><br>Total Odds: <span style="color:#fff; font-weight:bold;">@ 4.16</span></div>
-            <div class="pop-pnl-box"><span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span><span style="font-size:1.35rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span></div>
+            <div class="pop-pnl-box"><span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span><span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">+457.60</span></div>
         </div>
     </div>
 
     <!-- SLIP 22 -->
     <div class="pop-overlay" id="slip-22">
         <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
-        <div class="pop-card card-pending">
+        <div class="pop-card card-win">
             <span onclick="document.getElementById('slip-22').style.display='none'" class="pop-close">✕</span>
-            <div class="pop-topbar"><span style="color:#aaa; font-size:0.85rem;">06.09.2026 • Accumulator (5 Legs)</span><span class="pop-badge">PENDING</span></div>
-            <div class="pop-scroll"><div class="locked-box"><div style="font-family:'Righteous',cursive; color:#fff; font-size:1.05rem;">🔒 LOCKED SELECTIONS</div><div style="color:#888; font-size:0.8rem; margin-top:6px;">5 selections hidden until settlement.</div></div></div>
+            <div class="pop-topbar"><span style="color:#aaa; font-size:0.85rem;">06.09.2026 • Accumulator (5 Legs)</span><span class="pop-badge">WON</span></div>
+            <div class="pop-scroll">
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. Wessels, Louis - Kachmazov, Alibek</div><div class="slip-pick">Joueur 2 gagne un set : Oui (1.23) — Score : 0:2</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. Trevisan, Martina - Stusek, Julia</div><div class="slip-pick">Joueur 1 gagne un set : Oui (1.12) — Score : 2:0</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">3. Carpico B / Filin N S - Melo M / Peers J</div><div class="slip-pick">Joueur 2 gagne un set : Oui (1.25) — Score : 2:1</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">4. Montes-De La Torre - Balshaw</div><div class="slip-pick">Joueur 1 gagne un set : Oui (1.55) — Score : 1:2</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">5. Michelsen - Etcheverry</div><div class="slip-pick">Joueur 1 gagne un set : Oui (1.03) — Score : 3:0</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+            </div>
             <div class="pop-details">Stake: <span style="color:#fff; font-weight:bold;">144.81</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(1.0% Bankroll)</span><br>Total Odds: <span style="color:#fff; font-weight:bold;">@ 2.77</span></div>
-            <div class="pop-pnl-box"><span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span><span style="font-size:1.35rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span></div>
+            <div class="pop-pnl-box"><span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span><span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">+256.31</span></div>
         </div>
     </div>
 
     <!-- SLIP 21 -->
     <div class="pop-overlay" id="slip-21">
         <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
-        <div class="pop-card card-pending">
+        <div class="pop-card card-loss">
             <span onclick="document.getElementById('slip-21').style.display='none'" class="pop-close">✕</span>
-            <div class="pop-topbar"><span style="color:#aaa; font-size:0.85rem;">06.09.2026 • Accumulator (2 Legs)</span><span class="pop-badge">PENDING</span></div>
-            <div class="pop-scroll"><div class="locked-box"><div style="font-family:'Righteous',cursive; color:#fff; font-size:1.05rem;">🔒 LOCKED SELECTIONS</div><div style="color:#888; font-size:0.8rem; margin-top:6px;">2 selections hidden until settlement.</div></div></div>
+            <div class="pop-topbar"><span style="color:#aaa; font-size:0.85rem;">06.09.2026 • Accumulator (2 Legs)</span><span class="pop-badge">LOSS</span></div>
+            <div class="pop-scroll">
+                <div class="slip-row slip-loss"><div class="slip-info"><div class="slip-match">1. Carpico B / Filin N S - Melo M / Peers J</div><div class="slip-pick">Vainqueur du match : 2 — Melo / Peers (1.64) — Score : 2:1</div></div><span class="slip-badge badge-lost">✗ LOSS</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. Michelsen - Etcheverry</div><div class="slip-pick">Vainqueur du match : 1 — Michelsen (1.30) — Score : 3:0</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+            </div>
             <div class="pop-details">Stake: <span style="color:#fff; font-weight:bold;">724.04</span> <span style="color:var(--neon-gold); font-size:0.85rem;">(5.0% Bankroll)</span><br>Total Odds: <span style="color:#fff; font-weight:bold;">@ 2.13</span></div>
-            <div class="pop-pnl-box"><span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span><span style="font-size:1.35rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span></div>
+            <div class="pop-pnl-box"><span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span><span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">-724.04</span></div>
         </div>
     </div>
 
