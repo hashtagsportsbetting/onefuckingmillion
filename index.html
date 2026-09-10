@@ -67,7 +67,7 @@
         .progress-percentage { font-family: 'Righteous', cursive; font-size: 1.6rem; color: var(--neon-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
 
         .gauge-track { width: 100%; height: 22px; background: rgba(0, 0, 0, 0.8); border: 1px solid var(--neon-cyan); border-radius: 12px; overflow: hidden; padding: 2px; }
-        .gauge-fill { height: 100%; width: 1.34%; background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--win-green)); border-radius: 8px; box-shadow: 0 0 15px var(--neon-cyan); }
+        .gauge-fill { height: 100%; width: 1.37%; background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--win-green)); border-radius: 8px; box-shadow: 0 0 15px var(--neon-cyan); }
         .gauge-milestones { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.85rem; color: #888; }
         .gauge-milestones span.active { color: var(--neon-cyan); font-weight: bold; }
 
@@ -130,16 +130,19 @@
         .slip-row { background: rgba(255, 255, 255, 0.03); border: 1px solid #222; border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
         .slip-win { border-left: 3px solid var(--win-green); background: rgba(0, 255, 0, 0.04); }
         .slip-loss { border-left: 3px solid var(--loss-red); background: rgba(255, 68, 68, 0.05); }
+        .slip-void { border-left: 3px solid var(--neon-gold); background: rgba(255, 215, 0, 0.05); }
 
         .slip-info { display: flex; flex-direction: column; gap: 2px; font-size: 0.85rem; }
         .slip-match { color: #eee; font-weight: bold; }
         .slip-pick { font-size: 0.8rem; }
         .slip-win .slip-pick { color: var(--win-green); }
         .slip-loss .slip-pick { color: var(--loss-red); }
+        .slip-void .slip-pick { color: var(--neon-gold); }
 
         .slip-badge { font-size: 0.7rem; font-weight: bold; padding: 2px 6px; border-radius: 3px; font-family: 'Righteous', cursive; }
         .badge-won { background: rgba(0, 255, 0, 0.2); color: var(--win-green); }
         .badge-lost { background: rgba(255, 68, 68, 0.2); color: var(--loss-red); }
+        .badge-void { background: rgba(255, 215, 0, 0.2); color: var(--neon-gold); }
 
         .locked-box {
             background: rgba(0, 0, 0, 0.5);
@@ -176,7 +179,7 @@
         <section class="progress-card">
             <div class="progress-header">
                 <div class="progress-title">ROAD TO 1,000,000 🚀</div>
-                <div class="progress-percentage">1.34%</div>
+                <div class="progress-percentage">1.37%</div>
             </div>
             <div class="gauge-track"><div class="gauge-fill"></div></div>
             <div class="gauge-milestones">
@@ -188,15 +191,15 @@
         <section class="dashboard">
             <div class="stat-box">
                 <div class="stat-label">Current Bankroll</div>
-                <div class="stat-value stat-profit">13,424.07</div>
+                <div class="stat-value stat-profit">13,733.93</div>
                 <div class="stat-label" style="margin-top:6px; margin-bottom:0;">
-                    Total P&amp;L: <span class="stat-profit">+3,424.07</span>
+                    Total P&amp;L: <span class="stat-profit">+3,733.93</span>
                 </div>
             </div>
 
             <div class="stat-box">
                 <div class="stat-label">Days In Journey</div>
-                <div class="stat-value">Day 11</div>
+                <div class="stat-value">Day 12</div>
             </div>
         </section>
 
@@ -204,16 +207,26 @@
             <div class="mosaic-title"><span>BET HISTORY (NEW TO OLD)</span></div>
             <div class="mosaic-grid">
 
-                <!-- 2 DU 09/09 (PENDING) -->
-                <a href="#slip-31" onclick="document.getElementById('slip-31').style.display='flex'" class="mosaic-item bg-pending">
+                <!-- 3 DU 10/09 (PENDING) -->
+                <a href="#slip-34" onclick="document.getElementById('slip-34').style.display='flex'" class="mosaic-item bg-pending">
                     <span>PENDING</span>
-                    <span style="font-size:0.72rem; opacity:0.75; margin-top:2px;">@ 3.49</span>
+                    <span style="font-size:0.72rem; opacity:0.75; margin-top:2px;">@ 3.327</span>
                 </a>
 
-                <a href="#slip-30" onclick="document.getElementById('slip-30').style.display='flex'" class="mosaic-item bg-pending">
+                <a href="#slip-33" onclick="document.getElementById('slip-33').style.display='flex'" class="mosaic-item bg-pending">
                     <span>PENDING</span>
-                    <span style="font-size:0.72rem; opacity:0.75; margin-top:2px;">@ 2.02</span>
+                    <span style="font-size:0.72rem; opacity:0.75; margin-top:2px;">@ 8.81</span>
                 </a>
+
+                <a href="#slip-32" onclick="document.getElementById('slip-32').style.display='flex'" class="mosaic-item bg-pending">
+                    <span>PENDING</span>
+                    <span style="font-size:0.72rem; opacity:0.75; margin-top:2px;">@ 2.06</span>
+                </a>
+
+                <!-- 2 DU 09/09 (SETTLED — 2 UNIQUE MATCHES VOID) -->
+                <a href="#slip-31" onclick="document.getElementById('slip-31').style.display='flex'" class="mosaic-item bg-win">+110.45</a>
+
+                <a href="#slip-30" onclick="document.getElementById('slip-30').style.display='flex'" class="mosaic-item bg-win">+199.41</a>
 
                 <!-- 3 DU 08/09 (SETTLED) -->
                 <a href="#slip-29" onclick="document.getElementById('slip-29').style.display='flex'" class="mosaic-item bg-loss">-144.34</a>
@@ -307,27 +320,27 @@
         </div>
     </div>
 
-    <!-- ==================== 31 MODALES ==================== -->
+    <!-- ==================== 34 MODALES ==================== -->
 
-    <!-- SLIP 31 -->
-    <div class="pop-overlay" id="slip-31">
+    <!-- SLIP 34 -->
+    <div class="pop-overlay" id="slip-34">
         <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
         <div class="pop-card card-pending">
-            <span onclick="document.getElementById('slip-31').style.display='none'" class="pop-close">✕</span>
+            <span onclick="document.getElementById('slip-34').style.display='none'" class="pop-close">✕</span>
             <div class="pop-topbar">
-                <span style="color:#aaa; font-size:0.85rem;">09.09.2026 • Accumulator (4 Legs)</span>
+                <span style="color:#aaa; font-size:0.85rem;">10.09.2026 • Accumulator (9 Legs)</span>
                 <span class="pop-badge">PENDING</span>
             </div>
             <div class="pop-scroll">
                 <div class="locked-box">
                     <div style="font-family:'Righteous',cursive; color:#fff; font-size:1.05rem;">🔒 LOCKED SELECTIONS</div>
-                    <div style="color:#888; font-size:0.8rem; margin-top:6px;">4 selections hidden until settlement.</div>
+                    <div style="color:#888; font-size:0.8rem; margin-top:6px;">9 selections hidden until settlement.</div>
                 </div>
             </div>
             <div class="pop-details">
-                Stake: <span style="color:#fff; font-weight:bold;">134.24</span>
+                Stake: <span style="color:#fff; font-weight:bold;">137.34</span>
                 <span style="color:var(--neon-gold); font-size:0.85rem;">(1.0% Bankroll)</span><br>
-                Total Odds: <span style="color:#fff; font-weight:bold;">@ 3.49</span>
+                Total Odds: <span style="color:#fff; font-weight:bold;">@ 3.327</span>
             </div>
             <div class="pop-pnl-box">
                 <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
@@ -336,13 +349,40 @@
         </div>
     </div>
 
-    <!-- SLIP 30 -->
-    <div class="pop-overlay" id="slip-30">
+    <!-- SLIP 33 -->
+    <div class="pop-overlay" id="slip-33">
         <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
         <div class="pop-card card-pending">
-            <span onclick="document.getElementById('slip-30').style.display='none'" class="pop-close">✕</span>
+            <span onclick="document.getElementById('slip-33').style.display='none'" class="pop-close">✕</span>
             <div class="pop-topbar">
-                <span style="color:#aaa; font-size:0.85rem;">09.09.2026 • Accumulator (3 Legs)</span>
+                <span style="color:#aaa; font-size:0.85rem;">10.09.2026 • Accumulator (7 Legs)</span>
+                <span class="pop-badge">PENDING</span>
+            </div>
+            <div class="pop-scroll">
+                <div class="locked-box">
+                    <div style="font-family:'Righteous',cursive; color:#fff; font-size:1.05rem;">🔒 LOCKED SELECTIONS</div>
+                    <div style="color:#888; font-size:0.8rem; margin-top:6px;">7 selections hidden until settlement.</div>
+                </div>
+            </div>
+            <div class="pop-details">
+                Stake: <span style="color:#fff; font-weight:bold;">137.34</span>
+                <span style="color:var(--neon-gold); font-size:0.85rem;">(1.0% Bankroll)</span><br>
+                Total Odds: <span style="color:#fff; font-weight:bold;">@ 8.81</span>
+            </div>
+            <div class="pop-pnl-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
+                <span style="font-size:1.35rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIP 32 -->
+    <div class="pop-overlay" id="slip-32">
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
+        <div class="pop-card card-pending">
+            <span onclick="document.getElementById('slip-32').style.display='none'" class="pop-close">✕</span>
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;">10.09.2026 • Accumulator (3 Legs)</span>
                 <span class="pop-badge">PENDING</span>
             </div>
             <div class="pop-scroll">
@@ -352,13 +392,66 @@
                 </div>
             </div>
             <div class="pop-details">
-                Stake: <span style="color:#fff; font-weight:bold;">671.20</span>
+                Stake: <span style="color:#fff; font-weight:bold;">686.70</span>
                 <span style="color:var(--neon-gold); font-size:0.85rem;">(5.0% Bankroll)</span><br>
-                Total Odds: <span style="color:#fff; font-weight:bold;">@ 2.02</span>
+                Total Odds: <span style="color:#fff; font-weight:bold;">@ 2.06</span>
             </div>
             <div class="pop-pnl-box">
                 <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
                 <span style="font-size:1.35rem; font-family:'Righteous',cursive" class="pop-pnl-val">PENDING</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIP 31 -->
+    <div class="pop-overlay" id="slip-31">
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
+        <div class="pop-card card-win">
+            <span onclick="document.getElementById('slip-31').style.display='none'" class="pop-close">✕</span>
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;">09.09.2026 • Accumulator (4 Legs)</span>
+                <span class="pop-badge">WON</span>
+            </div>
+            <div class="pop-scroll">
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. Gabi Adrian Boitan vs Harold Mayot</div><div class="slip-pick">Match Winner: Harold Mayot (1.24) — Score: 1:2</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. Mirra Andreeva vs Coco Gauff</div><div class="slip-pick">Match Winner: Coco Gauff (1.47) — Score: 1:2</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+                <div class="slip-row slip-void"><div class="slip-info"><div class="slip-match">3. Jaume Munar vs Gonzalo Bueno</div><div class="slip-pick">Match Winner: Jaume Munar (1.23) — Match void</div></div><span class="slip-badge badge-void">VOID</span></div>
+                <div class="slip-row slip-void"><div class="slip-info"><div class="slip-match">4. Karen Khachanov vs Alexander Blockx</div><div class="slip-pick">Match Winner: Karen Khachanov (1.56) — Match void</div></div><span class="slip-badge badge-void">VOID</span></div>
+            </div>
+            <div class="pop-details">
+                Stake: <span style="color:#fff; font-weight:bold;">134.24</span>
+                <span style="color:var(--neon-gold); font-size:0.85rem;">(1.0% Bankroll)</span><br>
+                Original Odds: <span style="color:#fff; font-weight:bold;">@ 3.49</span> • Settled Odds: <span style="color:#fff; font-weight:bold;">@ 1.8228</span>
+            </div>
+            <div class="pop-pnl-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">+110.45</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIP 30 -->
+    <div class="pop-overlay" id="slip-30">
+        <a href="#" onclick="this.parentElement.style.display='none'" class="pop-backdrop-link"></a>
+        <div class="pop-card card-win">
+            <span onclick="document.getElementById('slip-30').style.display='none'" class="pop-close">✕</span>
+            <div class="pop-topbar">
+                <span style="color:#aaa; font-size:0.85rem;">09.09.2026 • Accumulator (3 Legs)</span>
+                <span class="pop-badge">WON</span>
+            </div>
+            <div class="pop-scroll">
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">1. Gabi Adrian Boitan vs Harold Mayot</div><div class="slip-pick">Player 2 to win a set: Yes — Harold Mayot (1.09) — Score: 1:2</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+                <div class="slip-row slip-win"><div class="slip-info"><div class="slip-match">2. Mirra Andreeva vs Coco Gauff</div><div class="slip-pick">Player 2 to win a set: Yes — Coco Gauff (1.19) — Score: 1:2</div></div><span class="slip-badge badge-won">✓ WON</span></div>
+                <div class="slip-row slip-void"><div class="slip-info"><div class="slip-match">3. Karen Khachanov vs Alexander Blockx</div><div class="slip-pick">Match Winner: Karen Khachanov (1.56) — Match void</div></div><span class="slip-badge badge-void">VOID</span></div>
+            </div>
+            <div class="pop-details">
+                Stake: <span style="color:#fff; font-weight:bold;">671.20</span>
+                <span style="color:var(--neon-gold); font-size:0.85rem;">(5.0% Bankroll)</span><br>
+                Original Odds: <span style="color:#fff; font-weight:bold;">@ 2.02</span> • Settled Odds: <span style="color:#fff; font-weight:bold;">@ 1.2971</span>
+            </div>
+            <div class="pop-pnl-box">
+                <span style="font-family:'Righteous',cursive; color:var(--neon-pink)">PROFIT / LOSS</span>
+                <span style="font-size:1.8rem; font-family:'Righteous',cursive" class="pop-pnl-val">+199.41</span>
             </div>
         </div>
     </div>
